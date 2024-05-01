@@ -1,11 +1,11 @@
 {
-  "homepage": "https://FatemeGhalandari.github.io/portfolio/",
+  "homepage": "https://fatemeghalandari.github.io/fatemeghalandari.github.io",
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
