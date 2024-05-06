@@ -1,17 +1,25 @@
 import "./Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 import {
   faLinkedin,
   faXTwitter,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
         <a href="/">
-          <span>Fateme Ghalandari</span>
+          <motion.span
+            initial={{ opacity: 0.5, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            Fateme Ghalandari
+          </motion.span>
         </a>
         <ul className="socials">
           <a href="https://www.linkedin.com/in/fghalandarii/">
