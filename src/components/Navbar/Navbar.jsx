@@ -7,10 +7,12 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Navbar = () => {
   return (
     <div className="navbar">
+      <Sidebar />
       <div className="wrapper">
         <a href="/">
           <motion.span
