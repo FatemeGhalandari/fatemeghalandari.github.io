@@ -1,0 +1,29 @@
+.skills {
+  background: linear-gradient(180deg, #1a1a2e, #323258);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  .textContainer {
+    flex: 1;
+  }
+
+  .titleContainer {
+    flex: 2;
+    .title {
+      img {
+        height: 100px;
+        width: 300px;
+        border-radius: 50px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .listContainer{
+    flex:2;
+    
+  }
+}
