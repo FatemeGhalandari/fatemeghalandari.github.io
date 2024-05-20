@@ -11,11 +11,13 @@ function App() {
         <Hero />
       </section>
       <section id="Portfolio">
-        <Parallax type="portfolio" />
-      </section>
-      <section><Skills/></section>
-      <section id="Skills">
         <Parallax type="skills" />
+      </section>
+      <section>
+        <Skills />
+      </section>
+      <section id="Skills">
+        <Parallax type="portfolio" />
       </section>
       <section>portfolio1</section>
       <section>portfolio2</section>
