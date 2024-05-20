@@ -1,31 +1,58 @@
 import "./Skills.scss";
+import { motion } from "framer-motion";
+
+const variants = {
+  initial: {
+    x: -500,
+    y: 0,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 const Skills = () => {
   return (
-    <div className="skills">
-      <div className="textContainer">
+    <motion.div
+      className="skills"
+      variants={variants}
+      initial="initial"
+      whileInView="animate"
+    >
+      <motion.div className="textContainer" variants={variants}>
         <p>
-          A computer engineering graduate adept at leveraging modern web
-          technologies to craft exceptional user experiences.
+          Adept at leveraging modern web technologies to craft exceptional user
+          experiences.
         </p>
         <hr />
-      </div>
-      <div className="titleContainer">
-        <div className="title">
+      </motion.div>
+      <motion.div className="titleContainer" variants={variants}>
+        <motion.div className="title">
           <img src="/people.webp" alt="" />
           <h1>
-            <b>Unique</b> ideas
+            <motion.b whileHover={{ color: "#fffb12" }}>Unique</motion.b> ideas
           </h1>
-        </div>
-        <div className="title">
+        </motion.div>
+        <motion.div className="title">
           <h1>
-            <b>For Your</b> Business
+            <motion.b whileHover={{ color: "#fffb12" }}>For Your</motion.b>{" "}
+            Business
           </h1>
           <button>What we do</button>
-        </div>
-      </div>
-      <div className="listContainer">
-        <div className="box">
+        </motion.div>
+      </motion.div>
+      <motion.div className="listContainer" variants={variants}>
+        <motion.div
+          className="box"
+          whileHover={{ background: "lightgray", color: "black" }}
+        >
           <h2>Branding</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
@@ -34,8 +61,11 @@ const Skills = () => {
             facilis obcaecati voluptates rem fugiat!
           </p>
           <button>Go</button>
-        </div>
-        <div className="box">
+        </motion.div>
+        <motion.div
+          className="box"
+          whileHover={{ background: "lightgray", color: "black" }}
+        >
           <h2>Branding</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
@@ -44,8 +74,11 @@ const Skills = () => {
             facilis obcaecati voluptates rem fugiat!
           </p>
           <button>Go</button>
-        </div>
-        <div className="box">
+        </motion.div>
+        <motion.div
+          className="box"
+          whileHover={{ background: "lightgray", color: "black" }}
+        >
           <h2>Branding</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
@@ -54,19 +87,9 @@ const Skills = () => {
             facilis obcaecati voluptates rem fugiat!
           </p>
           <button>Go</button>
-        </div>
-        <div className="box">
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-            consectetur dolor earum nostrum quaerat vero repellat impedit, atque
-            nesciunt placeat, est recusandae consequatur voluptate laboriosam,
-            facilis obcaecati voluptates rem fugiat!
-          </p>
-          <button>Go</button>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
