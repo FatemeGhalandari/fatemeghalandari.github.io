@@ -24,6 +24,15 @@
   }
   .formContainer {
     flex: 1;
+    position: relative;
+
+    .phone {
+      position: absolute;
+      margin: auto;
+      stroke: yellow ;
+      z-index: -1;
+    }
+
     form {
       display: flex;
       flex-direction: column;
