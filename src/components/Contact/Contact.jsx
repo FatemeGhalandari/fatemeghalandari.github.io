@@ -33,8 +33,8 @@ const Contact = () => {
       })
       .then(
         (success) => {
-              setSuccess(true);
-              console.log(success)
+          setSuccess(true);
+          console.log(success);
         },
         (error) => {
           setError(true);
