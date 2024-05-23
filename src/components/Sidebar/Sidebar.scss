@@ -1,3 +1,5 @@
+@import "../../App.scss";
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -15,6 +17,10 @@
     width: 400px;
     background: white;
 
+    @include mobile {
+      width: 200px;
+    }
+
     .links {
       display: flex;
       position: absolute;
@@ -27,7 +33,10 @@
       a {
         text-decoration: none;
         color: black;
-        font-size: 20px;
+        font-size: 30px;
+        @include mobile {
+          font-size: 20px;
+        }
       }
     }
   }
