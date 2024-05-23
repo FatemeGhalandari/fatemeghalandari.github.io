@@ -24,7 +24,7 @@ const Skills = () => {
       className="skills"
       variants={variants}
       initial="initial"
-      whileInView="animate"
+      animate="animate"
     >
       <motion.div className="textContainer" variants={variants}>
         <p>
