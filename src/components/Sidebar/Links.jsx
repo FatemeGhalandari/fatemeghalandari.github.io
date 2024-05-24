@@ -27,9 +27,13 @@ const itemVariants = {
 const Links = () => {
   const items = ["Home", "Services", "Portfolio", "Contact", "About"];
   return (
-    <motion.div className="links" variants={variants}>
+    <motion.div
+      className="flex flex-col items-center justify-center absolute h-[100%] w-[100%] gap-5"
+      variants={variants}
+    >
       {items.map((item) => (
         <motion.a
+          className="decoration-none text-black text-[30px]  cursor-pointer"
           href={`#${item}`}
           key={item}
           variants={itemVariants}
