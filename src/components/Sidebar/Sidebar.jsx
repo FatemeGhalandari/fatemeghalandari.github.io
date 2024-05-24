@@ -1,5 +1,4 @@
 import Links from "./Links";
-import "./Sidebar.scss";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ToggleButton from "./ToggleButton";
@@ -29,11 +28,14 @@ const Sidebar = () => {
   };
   return (
     <motion.div
-      className="sidebar"
+      className="flex flex-col items-start justify-center bg-white text-black"
       animate={open ? "open" : "closed"}
       initial="initial"
     >
-      <motion.div className="bg" variants={variants}>
+      <motion.div
+        className="z-[1] fixed top-0 left-0 bottom-0 sm:w-[400px] w-[200px] bg-white"
+        variants={variants}
+      >
         <Links />
       </motion.div>
       <ToggleButton setOpen={setOpen} open={open} />
