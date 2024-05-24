@@ -1,10 +1,10 @@
 import "./App.scss";
-import Contact from "./components/Contact/Contact";
-import Hero from "./components/Hero/Hero";
-import Navbar from "./components/Navbar/Navbar";
-import Parallax from "./components/Parallax/Parallax";
-import Portfolio from "./components/Portfolio/Portfolio";
-import Skills from "./components/Skills/Skills";
+import Contact from "./components/Contact";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import Parallax from "./components/Parallax";
+import Portfolio from "./components/Portfolio";
+import Skills from "./components/Skills";
 function App() {
   return (
     <div>
