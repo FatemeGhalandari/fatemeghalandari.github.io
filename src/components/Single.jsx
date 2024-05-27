@@ -14,20 +14,26 @@ const Single = ({ item }) => {
   return (
     <section>
       <div className="flex items-center justify-center h-[100%] w-[100%]">
-        <div className="m-auto max-w-[1366px] h-[100%]  flex gap-12 items-center justify-center">
-          <div className="flex-[1] h-[50%] overflow-hidden" ref={ref}>
+        <div className="m-auto max-w-[1366px] h-[100%] flex sm:gap-12 gap-2 items-center justify-center sm:flex-row flex-col p-5 ">
+          <div
+            className="flex-[1] h-[50%] overflow-hidden sm:w-fit w-[100%] sm:max-h-fit max-h-[300px]"
+            ref={ref}
+          >
             <img
-              className="h-[100%] w-[100%] object-cover"
+              className="h-[100%] w-[100%] sm:object-cover object-contain "
               src={item.img}
               alt="{item.img}"
             />
           </div>
-          <motion.div className="flex-[1] flex flex-col gap-5" style={{ y }}>
-            <h2 className="text-5xl">{item.title}</h2>
-            <p className="text-lg font-extralight text-gray-400 max-w-[500px]">
+          <motion.div
+            className="flex-[1] flex flex-col gap-5 !transform-none sm:p-0 p-2.5 sm:items-start items-center text-center"
+            style={{ y }}
+          >
+            <h2 className="sm:text-5xl text-3xl font-mono">{item.title}</h2>
+            <p className="sm:text-lg text-sm font-mono text-start font-extralight text-gray-400 max-w-[500px]">
               {item.desc}
             </p>
-            <button className="p-2 w-[200px] border-2 rounded-md border-[#9be76e] text-[#9be76e] hover:bg-[#9be76e] hover:text-[#1a1a2e] transition duration-300 ease-in-out">
+            <button className="p-2 w-[200px] font-mono border-2 rounded-md border-[#9be76e] text-[#9be76e] hover:bg-[#9be76e] hover:text-[#1a1a2e] transition duration-300 ease-in-out">
               {" "}
               See Demo
             </button>
