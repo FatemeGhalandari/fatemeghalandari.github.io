@@ -15,12 +15,13 @@ html {
 body {
   background-color: #1a1a2e;
   color: #fffcdb;
+  overflow: hidden;
 }
 section {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
 }
 a {
   text-decoration: none;
