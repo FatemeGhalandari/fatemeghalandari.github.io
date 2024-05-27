@@ -33,7 +33,7 @@ const Links = () => {
     >
       {items.map((item) => (
         <motion.a
-          className="decoration-none text-black text-[30px]  cursor-pointer"
+          className="decoration-none text-black sm:text-[30px] text-[20px] cursor-pointer"
           href={`#${item}`}
           key={item}
           variants={itemVariants}
