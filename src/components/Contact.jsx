@@ -44,7 +44,7 @@ const Contact = () => {
 
   return (
     <motion.div
-      className="h-full max-w-[1366px] mx-auto flex flex-row items-center justify-between"
+      className="h-full max-w-[1366px] mx-auto flex flex-row items-center justify-between gap-10 p-10"
       variants={variants}
       initial="initial"
       whileInView="animate"
@@ -70,7 +70,7 @@ const Contact = () => {
         </motion.div>
       </motion.div>
       <motion.div
-        className="flex-1 flex flex-col gap-10 relative "
+        className="flex-1 flex flex-col gap-10 relative pt-12"
         variants={variants}
       >
         <motion.div
