@@ -43,16 +43,19 @@ const Skills = () => {
           <img
             className="h-[100px] w-[300px] rounded-[50px] object-cover"
             src="/people.webp"
-            alt=""
+            alt="Skills"
           />
           <h1 className="text-[70px] font-thin">
-            <motion.b whileHover={{ color: "#9be76e" }}>Unique</motion.b> ideas
+            <motion.b whileHover={{ color: "#9be76e" }}> </motion.b>Innovative
+            Solutions
           </h1>
         </motion.div>
         <motion.div className="flex flex-row gap-12 items-center">
           <h1 className="text-[70px] font-thin">
-            <motion.b whileHover={{ color: "#9be76e" }}>For Your</motion.b>{" "}
-            Business
+            for{" "}
+            <motion.b whileHover={{ color: "#9be76e" }}>
+              Web Applications
+            </motion.b>{" "}
           </h1>
           <button className="h-[100px] w-[300px] rounded-[50px] object-cover border-none bg-[#9be76e] text-[20px] cursor-pointer">
             What we do
