@@ -42,8 +42,10 @@ const Portfolio = () => {
 
   return (
     <div className="relative" ref={ref}>
-      <div className="sticky top-0 left-0 pt-12 text-6xl text-center text-[#9be76e]">
-        <h1>Featured works</h1>
+      <div className="sticky top-0 left-0 sm:pt-12 pt-[calc(100vh-100px)] text-center">
+        <h1 className="sm:text-6xl text-4xl font-playfair  text-[#9be76e]">
+          Featured works
+        </h1>
         <motion.div className="bg-white h-2" style={{ scaleX }}></motion.div>
       </div>
       {items.map((item) => (
