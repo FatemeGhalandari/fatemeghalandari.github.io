@@ -24,20 +24,29 @@ const Navbar = () => {
           </motion.span>
         </a> */}
         <ul className="flex gap-5">
-          <a
-            href="https://www.linkedin.com/in/fghalandarii/"
-            className="w-4 h-4"
-          >
-            <FontAwesomeIcon icon={faLinkedin} />
+          <a href="https://www.linkedin.com/in/fghalandarii/">
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              style={{ width: "20px", height: "20px", color: "#9be76e" }}
+            />
           </a>
-          <a href="https://github.com/FatemeGhalandari" className="w-4 h-4">
-            <FontAwesomeIcon icon={faGithub} />
+          <a href="https://github.com/FatemeGhalandari">
+            <FontAwesomeIcon
+              icon={faGithub}
+              style={{ width: "20px", height: "20px", color: "#9be76e" }}
+            />
           </a>
-          <a href="https://twitter.com/fghalandarii" className="w-4 h-4">
-            <FontAwesomeIcon icon={faXTwitter} />
+          <a href="https://twitter.com/fghalandarii">
+            <FontAwesomeIcon
+              icon={faXTwitter}
+              style={{ width: "20px", height: "20px", color: "#9be76e" }}
+            />
           </a>
-          <a href="mailto:fghalandarii@gmail.com" className="w-4 h-4">
-            <FontAwesomeIcon icon={faEnvelope} />
+          <a href="mailto:fghalandarii@gmail.com">
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              style={{ width: "20px", height: "20px", color: "#9be76e" }}
+            />
           </a>
         </ul>
       </div>
