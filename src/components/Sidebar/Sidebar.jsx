@@ -1,9 +1,7 @@
 import Links from "./Links";
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-// import ToggleButton from "./ToggleButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import ToggleButton from "./ToggleButton";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -45,11 +43,7 @@ const Sidebar = () => {
       clipPath: "circle(30px at 50px 50px)",
     },
   };
-  const toggleSidebar = (event) => {
-    event.stopPropagation();
-    console.log("toggleSidebar: current open state", open);
-    setOpen(!open);
-  };
+
   return (
     <motion.div
       className="flex flex-col items-start justify-center bg-white text-black"
@@ -65,16 +59,7 @@ const Sidebar = () => {
       >
         <Links />
       </motion.div>
-      <button
-        className="fixed z-[20] top-6 left-6 w-[50px] h-[50px] bg-transparent border-r-4 border-none cursor-pointer"
-        onClick={toggleSidebar}
-      >
-        {open ? (
-          <FontAwesomeIcon icon={faX} />
-        ) : (
-          <FontAwesomeIcon icon={faBars} />
-        )}
-      </button>
+      <ToggleButton setOpen={setOpen} open={open} />
     </motion.div>
   );
 };
