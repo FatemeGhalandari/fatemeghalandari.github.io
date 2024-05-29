@@ -44,32 +44,34 @@ const Contact = () => {
 
   return (
     <motion.div
-      className="h-full max-w-[1366px] mx-auto flex sm:flex-row flex-col w-[100%] items-center sm:gap-10 gap-0 sm:p-10 p-2"
+      className="h-full max-w-[1366px] mx-auto flex sm:flex-row flex-col w-[100%] items-center sm:gap-10 gap-0 sm:p-10 p-4"
       variants={variants}
       initial="initial"
       whileInView="animate"
     >
       <motion.div
-        className="flex-1 flex flex-col sm:gap-4 gap-8 sm:pt-0 pt-20 sm:items-start items-center sm:text-start text-center justify-start"
+        className="flex-1 flex flex-col sm:gap-4 gap-2 sm:pt-0 pt-20 sm:items-start items-center sm:text-start text-center justify-start"
         variants={variants}
       >
         <motion.h1
-          className="sm:text-[90px] text-[32px] leading-tight"
+          className="sm:text-[90px] text-[28px] leading-tight"
           variants={variants}
         >
           Lets work <br className="sm:block hidden" /> together
         </motion.h1>
-        <motion.div className="item" variants={variants}>
-          <h2 className="sm:text-xl text-lg">Mail</h2>
-          <span className="text-base">fghalandarii@gmail.com</span>
+        <motion.div variants={variants}>
+          <h2 className="sm:text-xl text-base">Mail</h2>
+          <span className="sm:text-base text-sm">fghalandarii@gmail.com</span>
         </motion.div>
-        <motion.div className="item" variants={variants}>
-          <h2 className="sm:text-xl text-lg">Address</h2>
-          <span className="text-base">Hamilton, Ontario, Canada</span>
+        <motion.div variants={variants}>
+          <h2 className="sm:text-xl text-base">Address</h2>
+          <span className="sm:text-base text-sm">
+            Hamilton, Ontario, Canada
+          </span>
         </motion.div>
-        <motion.div className="item" variants={variants}>
-          <h2 className="sm:text-xl text-lg">Phone</h2>
-          <span className="text-base">+1 234 5678</span>
+        <motion.div variants={variants}>
+          <h2 className="sm:text-xl text-base">Phone</h2>
+          <span className="sm:text-base text-sm">+1 234 5678</span>
         </motion.div>
       </motion.div>
       <motion.div
