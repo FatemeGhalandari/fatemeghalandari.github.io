@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="h-[100px] bg-[#1a1a2e]">
       <Sidebar />
-      <div className="h-[100%] max-w-[1366px] flex m-auto items-center  justify-end sm:pl-5 p-5">
+      <div className="h-[100%] max-w-[1366px] flex m-auto items-center justify-end sm:pl-5 p-5">
         {/* <a href="/">
           <motion.span
             className="font-bold sm:block hidden font-mono"
