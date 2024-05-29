@@ -1,107 +1,111 @@
 import { motion } from "framer-motion";
+import { FaReact, FaSass, FaNodeJs } from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiFirebase,
+  SiMongodb,
+  SiRedux,
+  SiJavascript,
+  SiHtml5,
+} from "react-icons/si";
 
-const variants = {
-  initial: {
-    x: -500,
-    y: 0,
-    opacity: 0,
+const skills = [
+  {
+    name: "ReactJS",
+    icon: <FaReact className="text-blue-500" />,
+    description: "A JavaScript library for building user interfaces.",
   },
-  animate: {
-    x: 0,
-    y: 0,
+  {
+    name: "TailwindCSS",
+    icon: <SiTailwindcss className="text-teal-500" />,
+    description: "A utility-first CSS framework.",
+  },
+  {
+    name: "Firebase",
+    icon: <SiFirebase className="text-yellow-500" />,
+    description:
+      "A platform developed by Google for creating mobile and web applications.",
+  },
+  {
+    name: "Sass",
+    icon: <FaSass className="text-pink-500" />,
+    description:
+      "A preprocessor scripting language that is interpreted or compiled into CSS.",
+  },
+  {
+    name: "Node.js",
+    icon: <FaNodeJs className="text-green-500" />,
+    description: "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
+  },
+  {
+    name: "MongoDB",
+    icon: <SiMongodb className="text-green-500" />,
+    description:
+      "A source-available cross-platform document-oriented database program.",
+  },
+  {
+    name: "Redux",
+    icon: <SiRedux className="text-purple-500" />,
+    description: "A Predictable State Container for JavaScript Apps.",
+  },
+  {
+    name: "JavaScript",
+    icon: <SiJavascript className="text-yellow-500" />,
+    description:
+      "A programming language that conforms to the ECMAScript specification.",
+  },
+  {
+    name: "HTML5",
+    icon: <SiHtml5 className="text-orange-500" />,
+    description:
+      "A markup language used for structuring and presenting content on the World Wide Web.",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
     opacity: 1,
     transition: {
-      duration: 1,
-      staggerChildren: 0.1,
+      staggerChildren: 0.3,
     },
   },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 };
 
 const Skills = () => {
   return (
     <motion.div
-      className="h-[100%] bg-gradient-to-t to-[#1a1a2e] from-[#323258] flex flex-col items-center justify-between"
-      variants={variants}
-      initial="initial"
-      animate="animate"
+      className="max-w-[1366px] w-full h-full mx-auto sm:py-16 py-8 px-4 sm:px-6 lg:px-8"
+      initial="hidden"
+      whileInView="visible"
+      variants={containerVariants}
     >
-      <motion.div
-        className="flex-1 flex items-center self-end gap-5"
-        variants={variants}
+      <motion.h2
+        className="text-4xl font-playfair text-[#9be76e] mb-8 py-4 text-center"
+        variants={itemVariants}
       >
-        <p className="text-[18px] text-gray-400 font-extralight text-right">
-          Adept at leveraging modern web technologies to craft exceptional user
-          experiences.
-        </p>
-        <hr className="w-[500px] border-solid border-t-gray-400 border-t-[0.5px]" />
-      </motion.div>
+        Skills
+      </motion.h2>
       <motion.div
-        className="flex-[2] flex flex-col items-center"
-        variants={variants}
+        className="grid sm:gap-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-3"
+        variants={containerVariants}
       >
-        <motion.div className="flex flex-row gap-12 items-center">
-          <img
-            className="h-[100px] w-[300px] rounded-[50px] object-cover"
-            src="/people.webp"
-            alt="Skills"
-          />
-          <h1 className="text-[70px] font-thin">
-            <motion.b whileHover={{ color: "#9be76e" }}> </motion.b>Innovative
-            Solutions
-          </h1>
-        </motion.div>
-        <motion.div className="flex flex-row gap-12 items-center">
-          <h1 className="text-[70px] font-thin">
-            for{" "}
-            <motion.b whileHover={{ color: "#9be76e" }}>
-              Web Applications
-            </motion.b>{" "}
-          </h1>
-          <button className="h-[100px] w-[300px] rounded-[50px] object-cover border-none bg-[#9be76e] text-[20px] cursor-pointer">
-            What we do
-          </button>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        className="flex-[2] flex m-auto max-w-[1366px]"
-        variants={variants}
-      >
-        <motion.div
-          className="flex flex-col justify-between p-12 border-solid border-gray-400 border-[0.5px]"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p className="py-2">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-            consectetur dolor earum nostrum quaerat vero repellat impedit, atque
-            nesciunt placeat, est recusandae consequatur voluptate laboriosam,
-            facilis obcaecati voluptates rem fugiat!
-          </p>
-        </motion.div>
-        <motion.div
-          className="flex flex-col justify-between p-12 border-solid border-gray-400 border-[0.5px]"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p className="py-2">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-            consectetur dolor earum nostrum quaerat vero repellat impedit, atque
-            nesciunt placeat, est recusandae consequatur voluptate laboriosam,
-            facilis obcaecati voluptates rem fugiat!
-          </p>
-        </motion.div>
-        <motion.div
-          className="flex flex-col justify-between p-12 border-solid border-gray-400 border-[0.5px]"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p className="py-2">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-            consectetur dolor earum nostrum quaerat vero repellat impedit, atque
-            nesciunt placeat, est recusandae consequatur voluptate laboriosam,
-            facilis obcaecati voluptates rem fugiat!
-          </p>
-        </motion.div>
+        {skills.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="p-2 bg-gray-800 text-white rounded-lg shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:bg-gray-700"
+            variants={itemVariants}
+          >
+            <div className="text-6xl mb-4">{skill.icon}</div>
+            <h3 className="sm:text-xl text-sm  font-bold mb-2">{skill.name}</h3>
+            {/* <p className="text-center">{skill.description}</p> */}
+          </motion.div>
+        ))}
       </motion.div>
     </motion.div>
   );
