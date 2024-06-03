@@ -22,14 +22,14 @@ const Parallax = ({ type }) => {
       }}
     >
       <motion.h1
-        className="text-[80px] sm:text-[100px] font-bold font-montserrat text-[#CA8787] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)] "
+        className="text-[80px] sm:text-[100px] font-bold font-montserrat text-[#CA8787] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.3)] z-[3]"
         style={{ y: yText }}
       >
         {type === "skills" ? "skills" : "portfolio"}
       </motion.h1>
-      <motion.div className="bg-mountains w-[100%] h-[100%] bg-cover bg-bottom absolute z-[3]"></motion.div>
+      <motion.div className="bg-mountains w-[100%] h-[100%] sm:bg-cover bg-contain bg-no-repeat bg-bottom absolute z-[3]"></motion.div>
       <motion.div
-        className="bg-planets w-[100%] h-[100%] bg-cover bg-bottom absolute z-[2]"
+        className="bg-planets w-[100%] h-[100%] sm:bg-cover bg-contain bg-no-repeat bg-bottom absolute z-[2]"
         style={{ y: yBg }}
       ></motion.div>
       <motion.div

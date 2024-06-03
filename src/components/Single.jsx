@@ -34,7 +34,7 @@ const Single = ({ item }) => {
             <h2 className="sm:text-5xl text-3xl font-merriweather font-semibold text-[#CA8787]">
               {item.title}
             </h2>
-            <p className="sm:text-lg font-thin text-sm font-merriweather text-start tracking-wide text-[#88919e] max-w-[500px]">
+            <p className="sm:text-lg font-thin text-sm font-merriweather self-center text-start tracking-wide text-[#88919e] max-w-[500px]">
               {item.desc}
             </p>
             <div className="flex flex-row gap-4 justify-center items-center">
