@@ -46,13 +46,13 @@ const Sidebar = () => {
 
   return (
     <motion.div
-      className="flex flex-col items-start justify-center bg-white text-black"
+      className="flex flex-col items-start justify-center text-[#f8f6f5]"
       animate={open ? "open" : "closed"}
       initial="initial"
     >
       <motion.div
         ref={ref}
-        className={`z-[15] fixed top-0 left-0 bottom-0 sm:w-[400px] w-[200px] bg-white ${
+        className={`z-[15] fixed top-0 left-0 bottom-0 sm:w-[400px] w-[200px] bg-[#CA8787] ${
           open ? "open" : "closed"
         }`}
         variants={variants}

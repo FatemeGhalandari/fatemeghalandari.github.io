@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
 
 const textVariants = {
   initial: {
@@ -25,47 +27,61 @@ const textVariants = {
 
 const Hero = () => {
   return (
-    <div className="h-[calc(100vh-100px)] bg-gradient-to-t to-[#1a1a2e] from-[#323258] overflow-hidden relative">
+    <div className="h-[calc(100vh-100px)] bg-gradient-to-t to-[#F1F1F1] from-[#EADBC8] overflow-hidden relative">
       <div className="max-w-[1366px] m-auto h-[100%] pl-5">
         <motion.div
           className="sm:h-[100%] h-[50%] sm:w-[50%] w-[100%] flex flex-col justify-center sm:gap-10 gap-5 items-center sm:items-start sm:text-start text-center"
           variants={textVariants}
           initial="initial"
-          animate="animate"
+          whileInView="animate"
         >
           <motion.h2
-            className="sm:text-4xl text-3xl font-playfair text-[#9be76e] tracking-wider"
+            className="sm:text-4xl text-3xl font-bold font-montserrat text-[#CA8787] tracking-wider"
             variants={textVariants}
           >
             Fateme Ghalandari
           </motion.h2>
           <motion.h1
-            className="sm:text-4xl text-3xl font-playfair text-[#f5f5f5] tracking-wider"
+            className="sm:text-2xl text-3xl font-semibold font-merriweather text-[#CA8787] tracking-wider"
             variants={textVariants}
           >
-            Frontend Developer
+            Frontend Developer | Computer Engineering Graduate
           </motion.h1>
+          <motion.p
+            className="sm:text-lg font-thin text-sm font-merriweather text-[#CA8787] tracking-wide"
+            variants={textVariants}
+          >
+            With 1.5 years of experience in front-end development, a deep
+            passion has been cultivated for blending HTML, CSS, JavaScript,
+            React.js, and Tailwind CSS to create engaging web experiences.
+          </motion.p>
           <motion.div className="flex sm:gap-5 gap-2" variants={textVariants}>
             <motion.button
-              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#9be76e] text-[#9be76e] hover:bg-[#9be76e] hover:text-[#1a1a2e] transition duration-300 ease-in-out"
+              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
               variants={textVariants}
             >
-              <a href="#Portfolio">See the Latest Works</a>
+              <a className="font-merriweather" href="#Portfolio">
+                See the Latest Works
+              </a>
             </motion.button>
             <motion.button
-              className="p-3 border-2 rounded-md border-[#9be76e] text-[#9be76e] hover:bg-[#9be76e] hover:text-[#1a1a2e] transition duration-300 ease-in-out"
+              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
               variants={textVariants}
             >
-              <a href="#Contact">Contact Me</a>
+              <a className="font-merriweather" href="#Contact">
+                Contact Me
+              </a>
             </motion.button>
           </motion.div>
-          <motion.img
-            className="w-[50px]"
-            variants={textVariants}
-            src="/scroll.png"
-            alt="scroll"
-            animate="scroll"
-          />
+          <motion.div variants={textVariants} animate="scroll">
+            <FontAwesomeIcon
+              icon={faAnglesDown}
+              size="2xl"
+              className="w-[50px] text-[#CA8787]"
+              variants={textVariants}
+              animate="scroll"
+            />
+          </motion.div>
         </motion.div>
       </div>
       <div className="sm:h-[100%] h-[50%] sm:w-fit w-[100%] sm:top-0 sm:right-0 bottom-0 absolute">

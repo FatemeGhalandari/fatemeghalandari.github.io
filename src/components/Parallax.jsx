@@ -18,13 +18,13 @@ const Parallax = ({ type }) => {
       ref={ref}
       className="w-[100%] h-[100%] relative overflow-hidden flex items-center justify-center"
       style={{
-        background:
-          type === "skills"
-            ? "linear-gradient(180deg, #1a1a2e 0%, #323258 100%)"
-            : "linear-gradient(180deg, #1a1a2e 0%, #3f3f5b 100%)",
+        background: "linear-gradient(180deg, #EADBC8 0%, #5E88B2 100%)",
       }}
     >
-      <motion.h1 className="text-[80px] sm:text-[100px] font-playfair" style={{ y: yText }}>
+      <motion.h1
+        className="text-[80px] sm:text-[100px] font-bold font-montserrat text-[#CA8787] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)] "
+        style={{ y: yText }}
+      >
         {type === "skills" ? "skills" : "portfolio"}
       </motion.h1>
       <motion.div className="bg-mountains w-[100%] h-[100%] bg-cover bg-bottom absolute z-[3]"></motion.div>

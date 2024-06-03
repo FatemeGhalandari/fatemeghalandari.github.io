@@ -54,24 +54,28 @@ const Contact = () => {
         variants={variants}
       >
         <motion.h1
-          className="sm:text-[90px] text-[28px] leading-tight"
+          className="sm:text-[90px] text-[28px] leading-tight text-[#CA8787] font-merriweather font-bold"
           variants={variants}
         >
           Lets work <br className="sm:block hidden" /> together
         </motion.h1>
         <motion.div variants={variants}>
-          <h2 className="sm:text-xl text-base">Mail</h2>
-          <span className="sm:text-base text-sm">fghalandarii@gmail.com</span>
+          <h2 className="sm:text-xl text-base text-[#CA8787]">Mail</h2>
+          <span className="sm:text-base text-sm text-[#CA8787]">
+            fghalandarii@gmail.com
+          </span>
         </motion.div>
         <motion.div variants={variants}>
-          <h2 className="sm:text-xl text-base">Address</h2>
-          <span className="sm:text-base text-sm">
+          <h2 className="sm:text-xl text-base text-[#CA8787]">Address</h2>
+          <span className="sm:text-base text-sm text-[#CA8787]">
             Hamilton, Ontario, Canada
           </span>
         </motion.div>
         <motion.div variants={variants}>
-          <h2 className="sm:text-xl text-base">Phone</h2>
-          <span className="sm:text-base text-sm">+1 234 5678</span>
+          <h2 className="sm:text-xl text-base text-[#CA8787]">Phone</h2>
+          <span className="sm:text-base text-sm text-[#CA8787]">
+            +1 234 5678
+          </span>
         </motion.div>
       </motion.div>
       <motion.div
@@ -79,16 +83,17 @@ const Contact = () => {
         variants={variants}
       >
         <motion.div
-          className="absolute m-auto stroke-[#9be76e] z-[-1]"
+          className="absolute m-auto z-[-1]"
           initial={{ opacity: 1 }}
           whileInView={{ opacity: 0 }}
           transition={{ duration: 1, delay: 3 }}
         >
           <svg
-            className="sm:h-[450px] sm:w-[450px] h-[200px] w-[200px]"
+            className="sm:h-[450px] sm:w-[450px] h-[200px] w-[200px] "
             viewBox="0 0 473.806 473.806"
           >
             <motion.path
+              style={{ fill: "none", stroke: "#CA8787" }}
               strokeWidth={2}
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
@@ -111,6 +116,7 @@ const Contact = () => {
                 C420.456,377.706,420.456,388.206,410.256,398.806z"
             />
             <motion.path
+              style={{ fill: "none", stroke: "#CA8787" }}
               strokeWidth={2}
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
@@ -120,6 +126,7 @@ const Contact = () => {
                 S248.656,111.506,256.056,112.706z"
             />
             <motion.path
+              style={{ fill: "none", stroke: "#CA8787" }}
               strokeWidth={2}
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
@@ -139,27 +146,27 @@ const Contact = () => {
           transition={{ duration: 1, delay: 4 }}
         >
           <input
-            className="sm:p-3 p-2 sm:text-base text-sm border-[1px] border-solid border-[#9be76e] rounded-md bg-transparent text-white"
+            className="sm:p-3 p-2 sm:text-base font-merriweather text-sm border-[1px] border-solid border-[#CA8787] rounded-md bg-transparent text-white"
             required
             type="text"
             placeholder="Name"
             name="name"
           />
           <input
-            className="sm:p-3 p-2 sm:text-base text-sm border-[1px] border-solid border-[#9be76e] rounded-md bg-transparent text-white"
+            className="sm:p-3 p-2 sm:text-base text-sm font-merriweather border-[1px] border-solid border-[#CA8787] rounded-md bg-transparent text-white"
             required
             type="email"
             placeholder="Email"
             name="email"
           />
           <textarea
-            className="sm:p-3 p-2 sm:text-base text-sm border-[1px] border-solid border-[#9be76e] rounded-md bg-transparent text-white"
+            className="sm:p-3 p-2 sm:text-base text-sm font-merriweather border-[1px] border-solid border-[#CA8787] rounded-md bg-transparent text-white"
             rows={6}
             placeholder="Message"
             name="message"
           />
           <button
-            className="sm:p-2 p-1 mt-4 sm:text-base text-sm w-[200px] border-[1px] rounded-md border-[#9be76e] text-[#9be76e] hover:bg-[#9be76e] hover:text-[#1a1a2e] transition duration-300 ease-in-out"
+            className="sm:p-2 p-1 mt-4 sm:text-base text-sm font-merriweather w-[200px] border-[1px] rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
             type="submit"
           >
             Send

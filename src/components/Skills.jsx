@@ -86,7 +86,7 @@ const Skills = () => {
       variants={containerVariants}
     >
       <motion.h2
-        className="text-4xl font-playfair text-[#9be76e] mb-8 py-4 text-center"
+        className="text-5xl font-montserrat sm:font-bold text-[#CA8787] mb-8 py-4 text-center"
         variants={itemVariants}
       >
         Skills
@@ -98,11 +98,13 @@ const Skills = () => {
         {skills.map((skill, index) => (
           <motion.div
             key={index}
-            className="p-2 bg-gray-800 text-white rounded-lg shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:bg-gray-700"
+            className="p-2 bg-[#F6F5F2] text-[#88919e] rounded-lg shadow-md shadow-[#CA8787] flex flex-col items-center transform transition duration-300 hover:scale-105 hover:bg-[#CA8787] hover:text-white"
             variants={itemVariants}
           >
             <div className="text-6xl mb-4">{skill.icon}</div>
-            <h3 className="sm:text-xl text-sm  font-bold mb-2">{skill.name}</h3>
+            <h3 className="sm:text-lg text-sm font-semibold mb-2">
+              {skill.name}
+            </h3>
             {/* <p className="text-center">{skill.description}</p> */}
           </motion.div>
         ))}

@@ -5,7 +5,6 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 const ToggleButton = ({ setOpen, open }) => {
   const toggleSidebar = (event) => {
     event.stopPropagation();
-    console.log("toggleSidebar: current open state", open);
     setOpen(!open);
   };
   return (
