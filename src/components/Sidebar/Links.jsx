@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 const variants = {
   open: {
     transition: {
@@ -33,7 +34,7 @@ const Links = () => {
     >
       {items.map((item) => (
         <motion.a
-          className="decoration-none text-[#f8f6f5] sm:text-[30px] text-[20px] cursor-pointer"
+          className="no-underline text-[#f8f6f5] sm:text-[30px] text-[20px] font-merriweather cursor-pointer"
           href={`#${item}`}
           key={item}
           variants={itemVariants}
