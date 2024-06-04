@@ -22,7 +22,7 @@ const Single = ({ item }) => {
             ref={ref}
           >
             <img
-              className=" w-full sm:h-[400px] sm:w-auto object-contain mt-5"
+              className="w-full sm:h-[300px] sm:w-auto object-contain sm:mt-0 mt-5"
               src={item.img}
               alt={item.title}
             />
@@ -34,7 +34,7 @@ const Single = ({ item }) => {
             <h2 className="sm:text-5xl text-3xl font-merriweather font-semibold text-[#CA8787]">
               {item.title}
             </h2>
-            <p className="sm:text-lg font-thin text-sm font-merriweather self-center text-start tracking-wide text-[#88919e] max-w-[500px]">
+            <p className="sm:text-lg font-thin text-sm font-merriweather sm:self-start self-center text-start tracking-wide text-[#88919e] max-w-[500px]">
               {item.desc}
             </p>
             <div className="flex flex-row gap-4 justify-center items-center">
