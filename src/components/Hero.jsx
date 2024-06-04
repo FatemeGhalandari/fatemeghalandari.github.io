@@ -41,13 +41,26 @@ const Hero = () => {
           >
             Fateme Ghalandari
           </motion.h2>
-          <motion.h1
-            className="sm:text-2xl text-base font-semibold font-merriweather text-[#CA8787] tracking-wider"
-            variants={textVariants}
-          >
-            Frontend Developer <span className="sm:block hidden">|</span>
-            <br className="sm:hidden block" /> Computer Engineering Graduate
-          </motion.h1>
+          <motion.div className="flex sm:flex-row flex-col sm:gap-2 gap-0">
+            <motion.h1
+              className="sm:text-2xl text-base font-semibold font-merriweather text-[#CA8787] tracking-wider"
+              variants={textVariants}
+            >
+              Frontend Developer
+            </motion.h1>
+            <motion.span
+              className="sm:block hidden text-2xl font-semibold text-[#CA8787]"
+              variants={textVariants}
+            >
+              |
+            </motion.span>
+            <motion.h1
+              className="sm:text-2xl text-base font-semibold font-merriweather text-[#CA8787] tracking-wider"
+              variants={textVariants}
+            >
+              Computer Engineering Graduate
+            </motion.h1>
+          </motion.div>
           <motion.p
             className="sm:text-lg font-thin text-sm font-merriweather text-[#CA8787] tracking-tight"
             variants={textVariants}
