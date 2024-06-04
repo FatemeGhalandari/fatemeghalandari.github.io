@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   faLinkedin,
   faXTwitter,
@@ -24,30 +24,46 @@ const Navbar = () => {
           </motion.span>
         </a> */}
         <ul className="flex gap-5">
-          <a href="https://www.linkedin.com/in/fghalandarii/">
+          <motion.a
+            href="https://www.linkedin.com/in/fghalandarii/"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <FontAwesomeIcon
               icon={faLinkedin}
               style={{ width: "20px", height: "20px", color: "#CA8787" }}
             />
-          </a>
-          <a href="https://github.com/FatemeGhalandari">
+          </motion.a>
+          <motion.a
+            href="https://github.com/FatemeGhalandari"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <FontAwesomeIcon
               icon={faGithub}
               style={{ width: "20px", height: "20px", color: "#CA8787" }}
             />
-          </a>
-          <a href="https://twitter.com/fghalandarii">
+          </motion.a>
+          <motion.a
+            href="https://twitter.com/fghalandarii"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <FontAwesomeIcon
               icon={faXTwitter}
               style={{ width: "20px", height: "20px", color: "#CA8787" }}
             />
-          </a>
-          <a href="mailto:fghalandarii@gmail.com">
+          </motion.a>
+          <motion.a
+            href="mailto:fghalandarii@gmail.com"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <FontAwesomeIcon
               icon={faEnvelope}
               style={{ width: "20px", height: "20px", color: "#CA8787" }}
             />
-          </a>
+          </motion.a>
         </ul>
       </div>
     </div>
