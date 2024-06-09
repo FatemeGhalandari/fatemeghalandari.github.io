@@ -26,7 +26,12 @@ const itemVariants = {
 };
 
 const Links = () => {
-  const items = ["Home", "Skills", "Portfolio", "Contact"];
+  const items = [
+    { id: "Home", title: "Home" },
+    { id: "Skills", title: "Skills" },
+    { id: "Portfolio", title: "Portfolio" },
+    { id: "Contact", title: "Contact" },
+  ];
   return (
     <motion.div
       className="flex flex-col items-center justify-center absolute h-[100%] w-[100%] gap-5"
@@ -35,13 +40,13 @@ const Links = () => {
       {items.map((item) => (
         <motion.a
           className="no-underline text-[#f8f6f5] sm:text-[30px] text-[20px] font-merriweather cursor-pointer"
-          href={`#${item}`}
-          key={item}
+          href={`#${item.title}`}
+          key={item.id}
           variants={itemVariants}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
         >
-          {item}
+          {item.title}
         </motion.a>
       ))}
     </motion.div>
