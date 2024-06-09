@@ -11,7 +11,7 @@ const Single = ({ item }) => {
     target: ref,
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [-500, 500]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 500]);
 
   return (
     <section>
@@ -28,7 +28,7 @@ const Single = ({ item }) => {
             />
           </div>
           <motion.div
-            className="flex-[1] flex flex-col gap-5 !transform-none sm:p-0 p-2.5 sm:items-start items-center text-center"
+            className="flex-[1] flex flex-col gap-5 sm:p-0 p-2.5 sm:items-start items-center text-center"
             style={{ y }}
           >
             <h2 className="sm:text-5xl text-3xl font-merriweather font-semibold text-[#CA8787]">
@@ -40,12 +40,12 @@ const Single = ({ item }) => {
             <div className="flex flex-row gap-4 justify-center items-center">
               <button
                 onClick={() => window.open(item.demo)}
-                className="sm:p-2 p-1 sm:w-[200px] w-[150px]  border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
+                className="z-[3] sm:p-2 p-1 sm:w-[200px] w-[150px]  border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
               >
                 {" "}
                 <span className="font-merriweather text-lg"> See Demo</span>
               </button>
-              <a href={item.git}>
+              <a href={item.git} className="z-[3]">
                 <FontAwesomeIcon
                   icon={faGithub}
                   style={{ width: "25px", height: "25px", color: "#CA8787" }}
