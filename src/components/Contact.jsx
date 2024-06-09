@@ -71,12 +71,7 @@ const Contact = () => {
             Hamilton, Ontario, Canada
           </span>
         </motion.div>
-        <motion.div variants={variants}>
-          <h2 className="sm:text-xl text-base text-[#CA8787]">Phone</h2>
-          <span className="sm:text-base text-sm text-[#CA8787]">
-            +1 234 5678
-          </span>
-        </motion.div>
+        
       </motion.div>
       <motion.div
         className="flex-1 flex flex-col gap-10 relative"
