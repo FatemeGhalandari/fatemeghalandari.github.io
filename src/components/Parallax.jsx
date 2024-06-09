@@ -22,7 +22,7 @@ const Parallax = ({ type }) => {
       }}
     >
       <motion.h1
-        className="text-[80px] sm:text-[100px] font-bold font-montserrat text-[#CA8787] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.3)] z-[3]"
+        className="text-[70px] sm:text-[100px] font-bold font-montserrat text-[#CA8787] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.3)] z-[3]"
         style={{ y: yText }}
       >
         {type === "skills" ? "skills" : "portfolio"}
