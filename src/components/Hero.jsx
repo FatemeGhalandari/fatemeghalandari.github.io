@@ -28,7 +28,7 @@ const textVariants = {
 const Hero = () => {
   return (
     <div className="h-[calc(100vh-100px)] bg-gradient-to-t to-[#F1F1F1] from-[#EADBC8] overflow-hidden relative">
-      <div className="max-w-[1366px] m-auto h-[100%] pl-5">
+      <div className="max-w-[1366px] m-auto h-[100%] sm:pl-5 p-5">
         <motion.div
           className="sm:h-[100%] h-[50%] sm:w-[50%] w-[100%] flex flex-col justify-center sm:gap-10 gap-3 items-center sm:items-start sm:text-start text-center"
           variants={textVariants}
@@ -98,11 +98,11 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
-      <div className="sm:h-[100%] h-[50%] sm:w-fit w-[100%] sm:top-0 sm:right-0 bottom-0 absolute">
+      <div className="sm:h-[100%] h-1/2 sm:w-1/2 w-full sm:top-0 sm:right-0 bottom-0 absolute">
         <img
           src="/hero.png"
           alt="hero"
-          className="w-[100%] h-[100%] object-cover"
+          className="w-[100%] h-[100%] object-contain"
         />
       </div>
     </div>
