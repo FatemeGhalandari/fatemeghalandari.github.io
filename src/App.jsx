@@ -12,12 +12,21 @@ function App() {
     let sections = document.querySelectorAll("section");
     let currentSection = 0;
     let isScrolling;
+    let startTouchY;
 
     const handleScroll = (e) => {
       clearTimeout(isScrolling);
 
       isScrolling = setTimeout(() => {
-        if (e.deltaY > 0) {
+        let deltaY;
+        if (e.type === "wheel") {
+          deltaY = e.deltaY;
+        } else if (e.type === "touchmove") {
+          deltaY = startTouchY - e.touches[0].clientY;
+          startTouchY = e.touches[0].clientY - startTouchY;
+        }
+
+        if (deltaY > 0) {
           // Scrolling down
           currentSection = Math.min(sections.length - 1, currentSection + 1);
         } else {
@@ -25,12 +34,21 @@ function App() {
           currentSection = Math.max(0, currentSection - 1);
         }
         sections[currentSection].scrollIntoView({ behavior: "smooth" });
-      },100);
+      }, 100);
     };
+
+    const handleTouchStart = (e) => {
+      startTouchY = e.touches[0].clientY;
+    };
+
     window.addEventListener("wheel", handleScroll);
+    window.addEventListener("touchmove", handleScroll);
+    window.addEventListener("touchstart", handleTouchStart);
 
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      window.addEventListener("wheel", handleScroll);
+      window.addEventListener("touchmove", handleScroll);
+      window.addEventListener("touchstart", handleTouchStart);
     };
   }, []);
 
