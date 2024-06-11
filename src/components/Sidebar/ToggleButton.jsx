@@ -9,7 +9,7 @@ const ToggleButton = ({ setOpen, open }) => {
   };
   return (
     <button
-      className="menu-link fixed z-[20] top-6 left-6 w-[50px] h-[50px] bg-transparent border-r-4 border-none cursor-pointer"
+      className="nav-btn fixed z-[20] top-6 left-6 w-[50px] h-[50px] bg-transparent border-r-4 border-none cursor-pointer"
       onClick={toggleSidebar}
     >
       {open ? (

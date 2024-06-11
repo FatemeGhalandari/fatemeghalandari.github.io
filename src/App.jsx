@@ -24,7 +24,7 @@ function App() {
       }
     };
 
-    const links = document.querySelectorAll(".menu-link");
+    const links = document.querySelectorAll(".menu-link, .nav-btn");
     links.forEach((link) => link.addEventListener("click", handleLinkClick));
 
     const handleScroll = (e) => {
