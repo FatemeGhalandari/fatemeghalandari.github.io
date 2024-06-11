@@ -12,43 +12,25 @@ function App() {
     let sections = document.querySelectorAll("section");
     let currentSection = 0;
     let isScrolling;
-    let startTouchY;
 
-    const handleScroll = (e) => {
+    const handleScroll = () => {
       clearTimeout(isScrolling);
 
       isScrolling = setTimeout(() => {
-        let deltaY;
-        if (e.type === "wheel") {
-          deltaY = e.deltaY;
-        } else if (e.type === "touchmove") {
-          deltaY = startTouchY - e.touches[0].clientY;
-          startTouchY = e.touches[0].clientY - startTouchY;
-        }
+        const scrollY = window.scrollY;
+        const heights = Array.from(sections).map(
+          (section) => section.offsetTop
+        );
+        const max = Math.max(...heights.filter((h) => h <= scrollY));
 
-        if (deltaY > 0) {
-          // Scrolling down
-          currentSection = Math.min(sections.length - 1, currentSection + 1);
-        } else {
-          // Scrolling up
-          currentSection = Math.max(0, currentSection - 1);
-        }
+        currentSection = heights.indexOf(max);
         sections[currentSection].scrollIntoView({ behavior: "smooth" });
       }, 100);
     };
-
-    const handleTouchStart = (e) => {
-      startTouchY = e.touches[0].clientY;
-    };
-
-    window.addEventListener("wheel", handleScroll);
-    window.addEventListener("touchmove", handleScroll);
-    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.addEventListener("wheel", handleScroll);
-      window.addEventListener("touchmove", handleScroll);
-      window.addEventListener("touchstart", handleTouchStart);
+      window.addEventListener("scroll", handleScroll);
     };
   }, []);
 
