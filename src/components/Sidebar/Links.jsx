@@ -39,7 +39,7 @@ const Links = () => {
     >
       {items.map((item) => (
         <motion.a
-          className="no-underline text-[#f8f6f5] sm:text-[30px] text-[20px] font-merriweather cursor-pointer"
+          className="menu-link no-underline text-[#f8f6f5] sm:text-[30px] text-[20px] font-merriweather cursor-pointer"
           href={`#${item.title}`}
           key={item.id}
           variants={itemVariants}
