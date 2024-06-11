@@ -14,9 +14,21 @@ function App() {
     let isScrolling;
     let startTouchY;
 
+    const handleLinkClick = (e) => {
+      const clickedSection = e.target.getAttribute("href").substring(1); // remove the '#' from the href
+      const clickedSectionIndex = Array.from(sections).findIndex(
+        (section) => section.id === clickedSection
+      );
+      if (clickedSectionIndex !== -1) {
+        currentSection = clickedSectionIndex;
+      }
+    };
+
+    const links = document.querySelectorAll(".menu-link"); // replace 'a' with the correct selector for your menu links
+    links.forEach((link) => link.addEventListener("click", handleLinkClick));
+
     const handleScroll = (e) => {
       clearTimeout(isScrolling);
-
       isScrolling = setTimeout(() => {
         let deltaY;
         if (e.type === "wheel") {
@@ -49,6 +61,9 @@ function App() {
       window.addEventListener("wheel", handleScroll);
       window.addEventListener("touchmove", handleScroll);
       window.addEventListener("touchstart", handleTouchStart);
+      links.forEach((link) =>
+        link.removeEventListener("click", handleLinkClick)
+      );
     };
   }, []);
 
