@@ -44,20 +44,20 @@ const Contact = () => {
 
   return (
     <motion.div
-      className="h-full max-w-[1366px] mx-auto flex sm:flex-row flex-col w-[100%] items-center sm:gap-10 gap-0 sm:p-10 p-4"
+      className="h-full max-w-[1366px] mx-auto flex sm:flex-row flex-col w-[100%] items-center sm:gap-10 gap-0 sm:p-10 p-8"
       variants={variants}
       initial="initial"
       whileInView="animate"
     >
       <motion.div
-        className="flex-1 flex flex-col sm:gap-4 gap-2 sm:pt-0 pt-20 sm:items-start items-center sm:text-start text-center justify-start"
+        className="flex-1 flex flex-col sm:gap-4 gap-2 sm:pt-0 pt-0 sm:items-start items-center sm:text-start text-center sm:justify-start justify-center"
         variants={variants}
       >
         <motion.h1
           className="sm:text-[90px] text-[28px] leading-tight text-[#CA8787] font-merriweather font-bold"
           variants={variants}
         >
-          Lets work <br className="sm:block hidden" /> together
+          Let&apos;s work <br className="sm:block hidden" /> together
         </motion.h1>
         <motion.div variants={variants}>
           <h2 className="sm:text-xl text-base text-[#CA8787]">Mail</h2>
@@ -71,7 +71,6 @@ const Contact = () => {
             Hamilton, Ontario, Canada
           </span>
         </motion.div>
-        
       </motion.div>
       <motion.div
         className="flex-1 flex flex-col gap-10 relative"
@@ -133,7 +132,7 @@ const Contact = () => {
           </svg>
         </motion.div>
         <motion.form
-          className="flex flex-col gap-5 w-[100%]"
+          className="flex flex-col gap-3 sm:gap-4 md:gap-5 w-[100%]"
           ref={ref}
           onSubmit={sendEmail}
           initial={{ opacity: 0 }}
