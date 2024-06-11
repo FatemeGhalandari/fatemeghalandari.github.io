@@ -42,8 +42,8 @@ const Portfolio = () => {
 
   return (
     <div className="relative" ref={ref}>
-      <div className="sticky top-0 left-0 sm:pt-12 pt-[calc(100vh-100px)] text-center">
-        <h1 className="sm:text-5xl text-4xl font-bold font-montserrat sm:pb-2 pt-4 text-[#CA8787]">
+      <div className="sticky top-0 left-0 sm:pt-12 pt-[calc(100vh-150px)] md:pt-[cal(100vh-100px)] text-center">
+        <h1 className="md:text-5xl sm:text-4xl text-3xl font-bold font-montserrat sm:pb-2 pt-4 text-[#CA8787]">
           Featured works
         </h1>
         <motion.div

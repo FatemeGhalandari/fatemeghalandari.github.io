@@ -98,7 +98,7 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
-      <div className="sm:h-[100%] h-1/2 sm:w-1/2 w-full sm:top-0 sm:right-0 bottom-0 absolute pb-16 sm:pb-0">
+      <div className="sm:h-[100%] h-1/2 sm:w-1/2 w-full sm:top-0 sm:right-0 bottom-0 absolute pb-12 sm:pb-0">
         <img
           src="/profile.png"
           alt="hero"

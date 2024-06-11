@@ -24,7 +24,7 @@ function App() {
       }
     };
 
-    const links = document.querySelectorAll(".menu-link"); // replace 'a' with the correct selector for your menu links
+    const links = document.querySelectorAll(".menu-link");
     links.forEach((link) => link.addEventListener("click", handleLinkClick));
 
     const handleScroll = (e) => {
