@@ -74,7 +74,7 @@ const Hero = () => {
               className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
               variants={textVariants}
             >
-              <a className="font-merriweather" href="#Portfolio">
+              <a className="nav-btn font-merriweather" href="#Portfolio">
                 See the Latest Works
               </a>
             </motion.button>
@@ -82,7 +82,7 @@ const Hero = () => {
               className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
               variants={textVariants}
             >
-              <a className="font-merriweather" href="#Contact">
+              <a className="nav-btn font-merriweather" href="#Contact">
                 Contact Me
               </a>
             </motion.button>
