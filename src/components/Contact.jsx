@@ -68,7 +68,7 @@ const Contact = () => {
         <motion.div variants={variants}>
           <h2 className="sm:text-xl text-base text-[#CA8787]">Address</h2>
           <span className="sm:text-base text-sm text-[#CA8787]">
-            Hamilton, Ontario, Canada
+            Toronto, Ontario, Canada
           </span>
         </motion.div>
       </motion.div>

@@ -65,9 +65,9 @@ const Hero = () => {
             className="sm:text-lg font-thin text-sm font-merriweather text-[#CA8787] tracking-tight"
             variants={textVariants}
           >
-            With 1.5 years of experience in front-end development, a deep
-            passion has been cultivated for blending HTML, CSS, JavaScript,
-            React.js, and Tailwind CSS to create engaging web experiences.
+            With over three years of experience in front-end development, a deep
+            passion has been cultivated for blending HTML, CSS, TypeScript,
+            React.js and more to create engaging web experiences.
           </motion.p>
           <motion.div className="flex sm:gap-5 gap-2" variants={textVariants}>
             <motion.button
