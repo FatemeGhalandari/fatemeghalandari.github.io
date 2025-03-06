@@ -49,7 +49,7 @@ const Hero = () => {
               Frontend Developer
             </motion.h1>
             <motion.span
-              className="sm:block hidden text-2xl font-semibold text-[#CA8787]"
+              className="sm:!block hidden text-2xl font-semibold text-[#CA8787]"
               variants={textVariants}
             >
               |
