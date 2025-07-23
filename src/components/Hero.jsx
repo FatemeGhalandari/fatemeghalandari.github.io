@@ -46,7 +46,7 @@ const Hero = () => {
               className="sm:text-2xl text-base font-semibold font-merriweather text-[#CA8787] tracking-wider"
               variants={textVariants}
             >
-              Frontend Developer
+              Full Stack Developer
             </motion.h1>
             <motion.span
               className="sm:block hidden text-2xl font-semibold text-[#CA8787]"
@@ -62,12 +62,15 @@ const Hero = () => {
             </motion.h1>
           </motion.div>
           <motion.p
-            className="sm:text-lg font-thin text-sm font-merriweather text-[#CA8787] tracking-tight"
+            className="sm:text-xl font-thin text-sm font-merriweather text-[#CA8787] tracking-tight"
             variants={textVariants}
           >
-            With over three years of experience in front-end development, a deep
-            passion has been cultivated for blending HTML, CSS, TypeScript,
-            React.js and more to create engaging web experiences.
+            With over three years of full-stack experience, I’ve built
+            everything from clean, responsive frontends with React and
+            TypeScript to backend services in Python. Recently, I’ve been
+            working on AI-driven projects like SkillMate, combining web
+            development with language models to create interactive learning
+            tools.
           </motion.p>
           <motion.div className="flex sm:gap-5 gap-2" variants={textVariants}>
             <motion.button
@@ -84,6 +87,18 @@ const Hero = () => {
             >
               <a className="nav-btn font-merriweather" href="#Contact">
                 Contact Me
+              </a>
+            </motion.button>
+            <motion.button
+              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
+              variants={textVariants}
+            >
+              <a
+                className="nav-btn font-merriweather"
+                href="Fateme_Ghalandari_CV.pdf"
+                download
+              >
+                Download CV
               </a>
             </motion.button>
           </motion.div>

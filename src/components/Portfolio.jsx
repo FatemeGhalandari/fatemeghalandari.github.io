@@ -6,6 +6,14 @@ import Single from "./Single";
 const items = [
   {
     id: 1,
+    title: "SkillMate",
+    img: "skillmate.png",
+    desc: "An AI-powered web app that turns YouTube videos into bite-sized courses with summaries and interactive flashcards. Built with React, Tailwind, and FastAPI, and powered by LLMs through OpenRouter.",
+    demo: "https://skillmate-orcin.vercel.app/",
+    git: "https://github.com/FatemeGhalandari/skillmate",
+  },
+  {
+    id: 2,
     title: "Beautyness",
     img: "Beautyness.png",
     desc: 'A modern and responsive website built using ReactJS and Tailwind CSS delivering expertly crafted content on skincare routines and makeup tips. Rooted in a philosophy encapsulated by the slogan "Beauty is power, a smile is its sword."',
@@ -13,7 +21,7 @@ const items = [
     git: "https://github.com/FatemeGhalandari/Beautyness",
   },
   {
-    id: 2,
+    id: 3,
     title: "GraphHub",
     img: "GraphHub.png",
     desc: "Built with ReactJS and TailwindCSS and integrated with Firebase, GraphHub offers a seamless experience for analyzing your products, orders, user activities, and financial data.",
@@ -21,7 +29,7 @@ const items = [
     git: "https://github.com/FatemeGhalandari/GraphHub",
   },
   {
-    id: 3,
+    id: 4,
     title: "HooBank",
     img: "HooBank.png",
     desc: "A responsive web application, HooBank is designed for modern banking needs and has been developed with ReactJS, TailwindCSS, and Vite. Featuring a multi-component modular structure, the project emphasizes maintainability and reusability",
