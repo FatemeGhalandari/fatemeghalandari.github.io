@@ -1,64 +1,85 @@
 import { motion } from "framer-motion";
-import { FaReact, FaSass, FaNodeJs } from "react-icons/fa";
+import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiTailwindcss,
   SiFirebase,
   SiMongodb,
   SiRedux,
   SiJavascript,
-  SiHtml5,
+  SiPython,
+  SiDocker,
+  SiGit,
+  SiNextdotjs,
+  SiFastapi,
 } from "react-icons/si";
-
 const skills = [
   {
     name: "ReactJS",
-    icon: <FaReact className="text-blue-500" />,
+    icon: <FaReact className="text-[#61DBFB]" />,
     description: "A JavaScript library for building user interfaces.",
   },
   {
     name: "TailwindCSS",
-    icon: <SiTailwindcss className="text-teal-500" />,
-    description: "A utility-first CSS framework.",
+    icon: <SiTailwindcss className="text-[#38BDF8]" />,
+    description: "A utility-first CSS framework for building modern UIs.",
   },
   {
     name: "Firebase",
-    icon: <SiFirebase className="text-yellow-500" />,
+    icon: <SiFirebase className="text-[#FFCA28]" />,
     description:
-      "A platform developed by Google for creating mobile and web applications.",
+      "A backend platform for building scalable web and mobile apps.",
   },
   {
-    name: "Sass",
-    icon: <FaSass className="text-pink-500" />,
+    name: "Python",
+    icon: <SiPython className="text-[#3776AB]" />,
     description:
-      "A preprocessor scripting language that is interpreted or compiled into CSS.",
+      "A high-level programming language known for readability and versatility.",
   },
   {
     name: "Node.js",
-    icon: <FaNodeJs className="text-green-500" />,
-    description: "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
+    icon: <FaNodeJs className="text-[#3C873A]" />,
+    description:
+      "A JavaScript runtime environment built on Chrome's V8 engine.",
   },
   {
     name: "MongoDB",
-    icon: <SiMongodb className="text-green-500" />,
-    description:
-      "A source-available cross-platform document-oriented database program.",
+    icon: <SiMongodb className="text-[#47A248]" />,
+    description: "A NoSQL document-oriented database designed for scalability.",
   },
   {
     name: "Redux",
-    icon: <SiRedux className="text-purple-500" />,
-    description: "A Predictable State Container for JavaScript Apps.",
+    icon: <SiRedux className="text-[#764ABC]" />,
+    description: "A predictable state container for JavaScript and React apps.",
   },
   {
     name: "JavaScript",
-    icon: <SiJavascript className="text-yellow-500" />,
+    icon: <SiJavascript className="text-[#F7DF1E]" />,
     description:
-      "A programming language that conforms to the ECMAScript specification.",
+      "A programming language that powers dynamic behavior on the web.",
   },
   {
-    name: "HTML5",
-    icon: <SiHtml5 className="text-orange-500" />,
+    name: "Docker",
+    icon: <SiDocker className="text-[#2496ED]" />,
     description:
-      "A markup language used for structuring and presenting content on the World Wide Web.",
+      "A platform for building and deploying containerized applications.",
+  },
+  {
+    name: "Next.js",
+    icon: <SiNextdotjs className="text-black " />,
+    description:
+      "A React framework for building fullstack and server-rendered applications.",
+  },
+  {
+    name: "FastAPI",
+    icon: <SiFastapi className="text-[#009688]" />,
+    description:
+      "A fast, modern Python framework for building high-performance APIs.",
+  },
+  {
+    name: "Git",
+    icon: <SiGit className="text-[#F05032]" />,
+    description:
+      "A distributed version control system for managing source code.",
   },
 ];
 

@@ -46,7 +46,7 @@ const Hero = () => {
               className="sm:text-2xl text-base font-semibold font-merriweather text-[#CA8787] tracking-wider"
               variants={textVariants}
             >
-              Full Stack Developer
+              Software Developer
             </motion.h1>
             <motion.span
               className="sm:!block hidden text-2xl font-semibold text-[#CA8787]"
@@ -65,16 +65,15 @@ const Hero = () => {
             className="sm:text-xl font-thin text-sm font-merriweather text-[#CA8787] tracking-tight"
             variants={textVariants}
           >
-            With over three years of full-stack experience, I’ve built
-            everything from clean, responsive frontends with React and
-            TypeScript to backend services in Python. Recently, I’ve been
-            working on AI-driven projects like SkillMate, combining web
-            development with language models to create interactive learning
-            tools.
+            I am a software developer with over four years of experience,
+            currently working on an AI startup called Simor.co. I also work as
+            an AI Quality Analyst at Telus International. I am seeking new
+            opportunities in software development, and I have a strong interest
+            in AI and its applications.
           </motion.p>
           <motion.div className="flex sm:gap-5 gap-2" variants={textVariants}>
             <motion.button
-              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
+              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-white transition duration-300 ease-in-out"
               variants={textVariants}
             >
               <a className="nav-btn font-merriweather" href="#Portfolio">
@@ -82,7 +81,7 @@ const Hero = () => {
               </a>
             </motion.button>
             <motion.button
-              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
+              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-white transition duration-300 ease-in-out"
               variants={textVariants}
             >
               <a className="nav-btn font-merriweather" href="#Contact">
@@ -90,7 +89,7 @@ const Hero = () => {
               </a>
             </motion.button>
             <motion.button
-              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
+              className="sm:p-3 p-2 sm:text-lg text-sm border-2 rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-white transition duration-300 ease-in-out"
               variants={textVariants}
             >
               <a
