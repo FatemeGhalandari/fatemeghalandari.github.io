@@ -20,7 +20,7 @@ const projects = [
       "Structured schema designed for maintainability and clarity",
     ],
     stack: ["React", "Node.js", "PostgreSQL", "Prisma"],
-    image: "/ontario-service-finder.webp",
+    image: "/ontario-service-finder.png",
     imageAlt: "Ontario Service Finder project screenshot",
     links: {
       live: "https://ontario-service-finder.vercel.app/",
