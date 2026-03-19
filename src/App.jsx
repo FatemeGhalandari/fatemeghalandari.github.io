@@ -2,92 +2,73 @@ import "./App.css";
 import Contact from "./components/Contact";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Parallax from "./components/Parallax";
-import Portfolio from "./components/Portfolio";
-import Skills from "./components/Skills";
-import { useEffect } from "react";
+import Projects from "./components/Projects";
+import Strengths from "./components/Strengths";
+import Experience from "./components/Experience";
 
-function App() {
-  useEffect(() => {
-    let sections = document.querySelectorAll("section");
-    let currentSection = 0;
-    let isScrolling;
-    let startTouchY;
-
-    const handleLinkClick = (e) => {
-      const clickedSection = e.target.getAttribute("href").substring(1); // remove the '#' from the href
-      const clickedSectionIndex = Array.from(sections).findIndex(
-        (section) => section.id === clickedSection
-      );
-      if (clickedSectionIndex !== -1) {
-        currentSection = clickedSectionIndex;
-      }
-    };
-
-    const links = document.querySelectorAll(".menu-link, .nav-btn");
-    links.forEach((link) => link.addEventListener("click", handleLinkClick));
-
-    const handleScroll = (e) => {
-      clearTimeout(isScrolling);
-      isScrolling = setTimeout(() => {
-        let deltaY;
-        if (e.type === "wheel") {
-          deltaY = e.deltaY;
-        } else if (e.type === "touchmove") {
-          deltaY = startTouchY - e.touches[0].clientY;
-          startTouchY = e.touches[0].clientY - startTouchY;
-        }
-
-        if (deltaY > 0) {
-          // Scrolling down
-          currentSection = Math.min(sections.length - 1, currentSection + 1);
-        } else {
-          // Scrolling up
-          currentSection = Math.max(0, currentSection - 1);
-        }
-        sections[currentSection].scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    };
-
-    const handleTouchStart = (e) => {
-      startTouchY = e.touches[0].clientY;
-    };
-
-    window.addEventListener("wheel", handleScroll);
-    window.addEventListener("touchmove", handleScroll);
-    window.addEventListener("touchstart", handleTouchStart);
-
-    return () => {
-      window.addEventListener("wheel", handleScroll);
-      window.addEventListener("touchmove", handleScroll);
-      window.addEventListener("touchstart", handleTouchStart);
-      links.forEach((link) =>
-        link.removeEventListener("click", handleLinkClick)
-      );
-    };
-  }, []);
-
+export default function App() {
   return (
-    <div>
-      <section id="Home">
+    <div className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
+      {/* background layer */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(900px circle at 12% 10%, rgba(99,102,241,0.28), transparent 38%),
+              radial-gradient(700px circle at 88% 18%, rgba(34,211,238,0.16), transparent 34%),
+              radial-gradient(900px circle at 50% 85%, rgba(168,85,247,0.14), transparent 42%),
+              linear-gradient(180deg, #0a1020 0%, #050816 100%)
+            `,
+          }}
+        />
+
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: "46px 46px",
+          }}
+        />
+
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at center, transparent 55%, rgba(0,0,0,0.35) 100%)",
+          }}
+        />
+      </div>
+
+      {/* content */}
+      <div className="relative z-10">
         <Navbar />
-        <Hero />
-      </section>
-      <section id="Skills">
-        <Parallax type="skills" />
-      </section>
-      <section>
-        <Skills />
-      </section>
-      <section id="Portfolio">
-        <Parallax type="portfolio" />
-      </section>
-      <Portfolio />
-      <section id="Contact">
-        <Contact />
-      </section>
+
+        <main className="pt-[92px]">
+          <section id="Home" className="scroll-mt-[92px]">
+            <Hero />
+          </section>
+
+          <section id="Strengths" className="scroll-mt-[92px]">
+            <Strengths />
+          </section>
+
+          <section id="Projects" className="scroll-mt-[92px]">
+            <Projects />
+          </section>
+
+          <section id="Experience" className="scroll-mt-[92px]">
+            <Experience />
+          </section>
+
+          <section id="Contact" className="scroll-mt-[92px]">
+            <Contact />
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
-
-export default App;

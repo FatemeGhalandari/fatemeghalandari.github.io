@@ -1,176 +1,451 @@
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useMemo, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import emailjs from "@emailjs/browser";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
-const variants = {
-  initial: {
-    opacity: 0,
-    y: 500,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.1,
-    },
-  },
+const EMAIL = "fghalandarii@gmail.com";
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+function SocialLink({ href, children }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="rounded-xl border border-[color:var(--border)] bg-white/5 px-3 py-2 text-sm transition hover:bg-white/10"
+    >
+      {children}
+    </a>
+  );
+}
+
+SocialLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
-const Contact = () => {
-  const ref = useRef();
+function ActionLink({ href, children, primary = false }) {
+  const external =
+    typeof href === "string" &&
+    (href.startsWith("http") || href.startsWith("mailto:"));
 
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  return (
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      className={
+        primary
+          ? "rounded-xl bg-[color:var(--accent)] px-4 py-2.5 text-sm text-white transition hover:brightness-110"
+          : "rounded-xl border border-[color:var(--border)] bg-white/5 px-4 py-2.5 text-sm transition hover:bg-white/10"
+      }
+    >
+      {children}
+    </a>
+  );
+}
 
-  const sendEmail = (e) => {
+ActionLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  primary: PropTypes.bool,
+};
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+export default function Contact() {
+  const reduced = useReducedMotion();
+  const sectionRef = useRef(null);
+
+  const [name, setName] = useState("");
+  const [fromEmail, setFromEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState({ type: "", text: "" });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 22,
+    mass: 0.2,
+  });
+
+  const shellY = useTransform(smooth, [0, 1], [20, -18]);
+  const shellOpacity = useTransform(smooth, [0, 0.18, 1], [0.62, 1, 1]);
+  const shellScale = useTransform(smooth, [0, 0.2, 1], [0.99, 1, 1]);
+
+  const gridY = useTransform(smooth, [0, 1], [14, -18]);
+  const glowX = useTransform(smooth, [0, 1], [-10, 18]);
+  const glowY = useTransform(smooth, [0, 1], [6, -8]);
+
+  const headerY = useTransform(smooth, [0, 1], [14, -8]);
+  const introOpacity = useTransform(smooth, [0.05, 0.22, 1], [0.4, 1, 1]);
+
+  const leftCardY = useTransform(smooth, [0, 1], [20, -4]);
+  const rightCardY = useTransform(smooth, [0, 1], [30, 6]);
+
+  const leftCardOpacity = useTransform(smooth, [0.08, 0.24], [0.35, 1]);
+  const rightCardOpacity = useTransform(smooth, [0.14, 0.3], [0.25, 1]);
+
+  const scanY = useTransform(smooth, [0, 1], [0, 700]);
+
+  const missingConfig = useMemo(() => {
+    return !SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY;
+  }, []);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setStatus({ type: "success", text: "Email copied." });
+      window.setTimeout(() => setCopied(false), 1200);
+    } catch {
+      window.prompt("Copy email:", EMAIL);
+      setStatus({
+        type: "info",
+        text: "Clipboard permission was blocked, so the email was shown instead.",
+      });
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm("service_41i2w9k", "template_fw70moa", ref.current, {
-        publicKey: "dpph44jk0hx9XRUTw",
-      })
-      .then(
-        (result) => {
-          setSuccess(true);
-          console.log(result);
+    if (missingConfig) {
+      setStatus({
+        type: "error",
+        text: "EmailJS is not configured yet. Add your service ID, template ID, and public key to the environment variables.",
+      });
+      return;
+    }
+
+    if (!name.trim()) {
+      setStatus({ type: "error", text: "Please enter your name." });
+      return;
+    }
+
+    if (!fromEmail.trim()) {
+      setStatus({ type: "error", text: "Please enter your email." });
+      return;
+    }
+
+    if (!isValidEmail(fromEmail)) {
+      setStatus({ type: "error", text: "Please enter a valid email address." });
+      return;
+    }
+
+    if (!message.trim()) {
+      setStatus({ type: "error", text: "Please enter a message." });
+      return;
+    }
+
+    setIsSending(true);
+    setStatus({ type: "info", text: "Sending message..." });
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: name.trim(),
+          reply_to: fromEmail.trim(),
+          message: message.trim(),
+          to_name: "Fateme",
         },
-        (error) => {
-          setError(true);
-          console.log(error);
-        }
+        {
+          publicKey: PUBLIC_KEY,
+          blockHeadless: true,
+          limitRate: {
+            id: "portfolio-contact-form",
+            throttle: 10000,
+          },
+        },
       );
+
+      setStatus({
+        type: "success",
+        text: "Message sent successfully.",
+      });
+
+      setName("");
+      setFromEmail("");
+      setMessage("");
+    } catch (error) {
+      const errorText =
+        typeof error === "object" && error && "text" in error
+          ? error.text
+          : "Something went wrong while sending. Please try again.";
+
+      setStatus({
+        type: "error",
+        text: errorText,
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
-    <motion.div
-      className="h-full max-w-[1366px] mx-auto flex sm:flex-row flex-col w-[100%] items-center sm:gap-10 gap-0 sm:p-10 p-8"
-      variants={variants}
-      initial="initial"
-      whileInView="animate"
+    <section
+      ref={sectionRef}
+      className="mx-auto max-w-6xl px-5 pt-0 pb-8 sm:pt-5 sm:pb-12"
     >
       <motion.div
-        className="flex-1 flex flex-col sm:gap-4 gap-2 sm:pt-0 pt-0 sm:items-start items-center sm:text-start text-center sm:justify-start justify-center"
-        variants={variants}
+        style={
+          reduced
+            ? undefined
+            : {
+                y: shellY,
+                opacity: shellOpacity,
+                scale: shellScale,
+              }
+        }
+        className="relative overflow-hidden rounded-[32px] border border-[color:var(--border)] bg-[rgba(8,12,24,0.58)] shadow-[0_30px_120px_rgba(0,0,0,0.34)] backdrop-blur-xl"
       >
-        <motion.h1
-          className="sm:text-[90px] text-[28px] leading-tight text-[#CA8787] font-merriweather font-bold"
-          variants={variants}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
         >
-          Let&apos;s work <br className="sm:block hidden" /> together
-        </motion.h1>
-        <motion.div variants={variants}>
-          <h2 className="sm:text-xl text-base text-[#CA8787]">Mail</h2>
-          <span className="sm:text-base text-sm text-[#CA8787]">
-            fghalandarii@gmail.com
-          </span>
-        </motion.div>
-        <motion.div variants={variants}>
-          <h2 className="sm:text-xl text-base text-[#CA8787]">Address</h2>
-          <span className="sm:text-base text-sm text-[#CA8787]">
-            Toronto, Ontario, Canada
-          </span>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        className="flex-1 flex flex-col gap-10 relative"
-        variants={variants}
-      >
-        <motion.div
-          className="absolute m-auto z-[-1]"
-          initial={{ opacity: 1 }}
-          whileInView={{ opacity: 0 }}
-          transition={{ duration: 1, delay: 3 }}
-        >
-          <svg
-            className="sm:h-[450px] sm:w-[450px] h-[200px] w-[200px] "
-            viewBox="0 0 473.806 473.806"
+          <motion.div
+            style={reduced ? undefined : { y: gridY }}
+            className="absolute inset-0 opacity-[0.07]"
           >
-            <motion.path
-              style={{ fill: "none", stroke: "#CA8787" }}
-              strokeWidth={2}
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              transition={{ duration: 2 }}
-              d="M374.456,293.506c-9.7-10.1-21.4-15.5-33.8-15.5c-12.3,0-24.1,5.3-34.2,15.4l-31.6,31.5c-2.6-1.4-5.2-2.7-7.7-4
-                c-3.6-1.8-7-3.5-9.9-5.3c-29.6-18.8-56.5-43.3-82.3-75c-12.5-15.8-20.9-29.1-27-42.6c8.2-7.5,15.8-15.3,23.2-22.8
-                c2.8-2.8,5.6-5.7,8.4-8.5c21-21,21-48.2,0-69.2l-27.3-27.3c-3.1-3.1-6.3-6.3-9.3-9.5c-6-6.2-12.3-12.6-18.8-18.6
-                c-9.7-9.6-21.3-14.7-33.5-14.7s-24,5.1-34,14.7c-0.1,0.1-0.1,0.1-0.2,0.2l-34,34.3c-12.8,12.8-20.1,28.4-21.7,46.5
-                c-2.4,29.2,6.2,56.4,12.8,74.2c16.2,43.7,40.4,84.2,76.5,127.6c43.8,52.3,96.5,93.6,156.7,122.7c23,10.9,53.7,23.8,88,26
-                c2.1,0.1,4.3,0.2,6.3,0.2c23.1,0,42.5-8.3,57.7-24.8c0.1-0.2,0.3-0.3,0.4-0.5c5.2-6.3,11.2-12,17.5-18.1c4.3-4.1,8.7-8.4,13-12.9
-                c9.9-10.3,15.1-22.3,15.1-34.6c0-12.4-5.3-24.3-15.4-34.3L374.456,293.506z M410.256,398.806
-                C410.156,398.806,410.156,398.906,410.256,398.806c-3.9,4.2-7.9,8-12.2,12.2c-6.5,6.2-13.1,12.7-19.3,20
-                c-10.1,10.8-22,15.9-37.6,15.9c-1.5,0-3.1,0-4.6-0.1c-29.7-1.9-57.3-13.5-78-23.4c-56.6-27.4-106.3-66.3-147.6-115.6
-                c-34.1-41.1-56.9-79.1-72-119.9c-9.3-24.9-12.7-44.3-11.2-62.6c1-11.7,5.5-21.4,13.8-29.7l34.1-34.1c4.9-4.6,10.1-7.1,15.2-7.1
-                c6.3,0,11.4,3.8,14.6,7c0.1,0.1,0.2,0.2,0.3,0.3c6.1,5.7,11.9,11.6,18,17.9c3.1,3.2,6.3,6.4,9.5,9.7l27.3,27.3
-                c10.6,10.6,10.6,20.4,0,31c-2.9,2.9-5.7,5.8-8.6,8.6c-8.4,8.6-16.4,16.6-25.1,24.4c-0.2,0.2-0.4,0.3-0.5,0.5
-                c-8.6,8.6-7,17-5.2,22.7c0.1,0.3,0.2,0.6,0.3,0.9c7.1,17.2,17.1,33.4,32.3,52.7l0.1,0.1c27.6,34,56.7,60.5,88.8,80.8
-                c4.1,2.6,8.3,4.7,12.3,6.7c3.6,1.8,7,3.5,9.9,5.3c0.4,0.2,0.8,0.5,1.2,0.7c3.4,1.7,6.6,2.5,9.9,2.5c8.3,0,13.5-5.2,15.2-6.9
-                l34.2-34.2c3.4-3.4,8.8-7.5,15.1-7.5c6.2,0,11.3,3.9,14.4,7.3c0.1,0.1,0.1,0.1,0.2,0.2l55.1,55.1
-                C420.456,377.706,420.456,388.206,410.256,398.806z"
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
+                backgroundSize: "72px 72px",
+              }}
             />
-            <motion.path
-              style={{ fill: "none", stroke: "#CA8787" }}
-              strokeWidth={2}
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              transition={{ duration: 2 }}
-              d="M256.056,112.706c26.2,4.4,50,16.8,69,35.8s31.3,42.8,35.8,69c1.1,6.6,6.8,11.2,13.3,11.2c0.8,0,1.5-0.1,2.3-0.2
-                c7.4-1.2,12.3-8.2,11.1-15.6c-5.4-31.7-20.4-60.6-43.3-83.5s-51.8-37.9-83.5-43.3c-7.4-1.2-14.3,3.7-15.6,11
-                S248.656,111.506,256.056,112.706z"
-            />
-            <motion.path
-              style={{ fill: "none", stroke: "#CA8787" }}
-              strokeWidth={2}
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              transition={{ duration: 2 }}
-              d="M473.256,209.006c-8.9-52.2-33.5-99.7-71.3-137.5s-85.3-62.4-137.5-71.3c-7.3-1.3-14.2,3.7-15.5,11
-                c-1.2,7.4,3.7,14.3,11.1,15.6c46.6,7.9,89.1,30,122.9,63.7c33.8,33.8,55.8,76.3,63.7,122.9c1.1,6.6,6.8,11.2,13.3,11.2
-                c0.8,0,1.5-0.1,2.3-0.2C469.556,223.306,474.556,216.306,473.256,209.006z"
-            />
-          </svg>
-        </motion.div>
-        <motion.form
-          className="flex flex-col gap-3 sm:gap-4 md:gap-5 w-[100%]"
-          ref={ref}
-          onSubmit={sendEmail}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 4 }}
-        >
-          <input
-            className="sm:p-3 p-2 sm:text-base font-merriweather text-sm border-[1px] border-solid border-[#CA8787] rounded-md bg-transparent text-white"
-            required
-            type="text"
-            placeholder="Name"
-            name="name"
-          />
-          <input
-            className="sm:p-3 p-2 sm:text-base text-sm font-merriweather border-[1px] border-solid border-[#CA8787] rounded-md bg-transparent text-white"
-            required
-            type="email"
-            placeholder="Email"
-            name="email"
-          />
-          <textarea
-            className="sm:p-3 p-2 sm:text-base text-sm font-merriweather border-[1px] border-solid border-[#CA8787] rounded-md bg-transparent text-white"
-            rows={6}
-            placeholder="Message"
-            name="message"
-          />
-          <button
-            className="sm:p-2 p-1 mt-4 sm:text-base text-sm font-merriweather w-[200px] border-[1px] rounded-md border-[#CA8787] text-[#CA8787] hover:bg-[#CA8787] hover:text-black transition duration-300 ease-in-out"
-            type="submit"
-          >
-            Send
-          </button>
-          {error && "Error"}
-          {success && "Success"}
-        </motion.form>
-      </motion.div>
-    </motion.div>
-  );
-};
+          </motion.div>
 
-export default Contact;
+          <motion.div
+            style={reduced ? undefined : { x: glowX, y: glowY }}
+            className="absolute -left-20 top-8 h-[300px] w-[300px] rounded-full blur-[100px]"
+          >
+            <div className="h-full w-full rounded-full bg-[radial-gradient(circle,rgba(104,92,255,0.22)_0%,rgba(104,92,255,0.06)_42%,rgba(104,92,255,0)_74%)]" />
+          </motion.div>
+
+          <motion.div
+            style={reduced ? undefined : { x: -glowX, y: -glowY }}
+            className="absolute -bottom-24 right-[-90px] h-[320px] w-[320px] rounded-full blur-[105px]"
+          >
+            <div className="h-full w-full rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.03)_42%,rgba(255,255,255,0)_74%)]" />
+          </motion.div>
+
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(102,89,255,0.10)_0%,rgba(8,12,24,0)_42%,rgba(255,255,255,0.03)_100%)]" />
+
+          <motion.div
+            style={reduced ? undefined : { y: scanY }}
+            className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(124,108,255,0.42),transparent)] opacity-50"
+          />
+        </div>
+
+        <div className="relative p-7 sm:p-10 lg:p-11">
+          <motion.div style={reduced ? undefined : { y: headerY }}>
+            <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--muted)]">
+              Contact
+            </p>
+
+            <motion.h2
+              style={reduced ? undefined : { opacity: introOpacity }}
+              className="mt-4 max-w-[12ch] text-3xl font-semibold leading-[1.02] sm:text-5xl"
+            >
+              Let&apos;s talk about the role or project
+              <span className="text-[color:var(--accent)]">.</span>
+            </motion.h2>
+
+            <motion.p
+              style={reduced ? undefined : { opacity: introOpacity }}
+              className="mt-5 max-w-3xl text-base leading-7 text-white/88 sm:text-lg"
+            >
+              Open to full-stack, software, and web engineering roles. Reach out
+              for opportunities, collaborations, or product work.
+            </motion.p>
+          </motion.div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <motion.div
+              style={
+                reduced ? undefined : { y: leftCardY, opacity: leftCardOpacity }
+              }
+            >
+              <motion.div
+                whileHover={reduced ? undefined : { scale: 1.008 }}
+                transition={{ type: "spring", stiffness: 240, damping: 20 }}
+                className="group relative h-full overflow-hidden rounded-[28px] border border-[color:var(--border)] bg-[rgba(255,255,255,0.03)] p-6 backdrop-blur-xl sm:p-7"
+              >
+                <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(108,92,255,0.10),transparent_58%,rgba(255,255,255,0.04))]" />
+                </div>
+
+                <div className="relative">
+                  <p className="text-sm text-[color:var(--muted)]">
+                    Direct contact
+                  </p>
+
+                  <div className="mt-3 text-lg font-semibold text-white sm:text-xl">
+                    {EMAIL}
+                    <span className="text-[color:var(--accent)]">.</span>
+                  </div>
+
+                  <p className="mt-4 max-w-md text-sm leading-6 text-[color:var(--muted)]">
+                    Best for hiring conversations, project inquiries, and
+                    collaboration opportunities.
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      onClick={handleCopy}
+                      className="rounded-xl border border-[color:var(--border)] bg-white/5 px-4 py-2.5 text-sm transition hover:bg-white/10"
+                    >
+                      {copied ? "Copied ✓" : "Copy email"}
+                    </button>
+
+                    <ActionLink href={`mailto:${EMAIL}`} primary>
+                      Email me ↗
+                    </ActionLink>
+
+                    <ActionLink href="/Fateme_Ghalandari_CV.pdf">
+                      Resume ↗
+                    </ActionLink>
+                  </div>
+
+                  <div className="mt-8">
+                    <p className="text-sm text-[color:var(--muted)]">Links</p>
+
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <SocialLink href="https://github.com/FatemeGhalandari">
+                        GitHub ↗
+                      </SocialLink>
+                      <SocialLink href="https://www.linkedin.com/in/fghalandarii/">
+                        LinkedIn ↗
+                      </SocialLink>
+                      <SocialLink href="https://twitter.com/fghalandarii">
+                        X ↗
+                      </SocialLink>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              style={
+                reduced
+                  ? undefined
+                  : { y: rightCardY, opacity: rightCardOpacity }
+              }
+            >
+              <motion.div
+                whileHover={reduced ? undefined : { scale: 1.008 }}
+                transition={{ type: "spring", stiffness: 240, damping: 20 }}
+                className="group relative h-full overflow-hidden rounded-[28px] border border-[color:var(--border)] bg-[rgba(255,255,255,0.03)] p-6 backdrop-blur-xl sm:p-7"
+              >
+                <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(108,92,255,0.10),transparent_58%,rgba(255,255,255,0.04))]" />
+                </div>
+
+                <div className="relative">
+                  <p className="text-sm text-[color:var(--muted)]">
+                    Send a message
+                  </p>
+
+                  <form
+                    onSubmit={handleSubmit}
+                    className="mt-4 space-y-4"
+                    noValidate
+                  >
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <label className="block">
+                        <span className="text-xs text-[color:var(--muted)]">
+                          Name
+                        </span>
+                        <input
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Your name"
+                          autoComplete="name"
+                          className="mt-2 w-full rounded-2xl border border-[color:var(--border)] bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-[color:var(--accent)]/60"
+                        />
+                      </label>
+
+                      <label className="block">
+                        <span className="text-xs text-[color:var(--muted)]">
+                          Email
+                        </span>
+                        <input
+                          value={fromEmail}
+                          onChange={(e) => setFromEmail(e.target.value)}
+                          placeholder="you@email.com"
+                          autoComplete="email"
+                          type="email"
+                          className="mt-2 w-full rounded-2xl border border-[color:var(--border)] bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-[color:var(--accent)]/60"
+                        />
+                      </label>
+                    </div>
+
+                    <label className="block">
+                      <span className="text-xs text-[color:var(--muted)]">
+                        Message
+                      </span>
+                      <textarea
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Tell me about the role, team, or project..."
+                        rows={6}
+                        className="mt-2 w-full resize-none rounded-2xl border border-[color:var(--border)] bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-[color:var(--accent)]/60"
+                      />
+                    </label>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        type="submit"
+                        disabled={isSending}
+                        className="rounded-xl bg-[color:var(--accent)] px-5 py-2.5 text-sm text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {isSending ? "Sending..." : "Send message ↗"}
+                      </button>
+                    </div>
+
+                    {status.text ? (
+                      <div
+                        className={`rounded-2xl border px-4 py-3 text-sm ${
+                          status.type === "error"
+                            ? "border-red-400/30 bg-red-400/10 text-red-200"
+                            : status.type === "success"
+                              ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-200"
+                              : "border-[color:var(--border)] bg-white/[0.04] text-[color:var(--muted)]"
+                        }`}
+                      >
+                        {status.text}
+                      </div>
+                    ) : null}
+                  </form>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}

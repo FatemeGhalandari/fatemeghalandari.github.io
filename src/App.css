@@ -9,18 +9,17 @@
   font-family: "DM Sans", sans-serif;
 }
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 body {
-  background-color: #EADBC8;  color: #fffcdb;
-  overflow: hidden;
+  
+  overflow-x: hidden;
 }
-section {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  scroll-snap-align: start;
+
+.page-section {
+  min-height: 100vh;
+  width: 100%;
+  scroll-margin-top: 80px;
 }
 a {
   text-decoration: none;
