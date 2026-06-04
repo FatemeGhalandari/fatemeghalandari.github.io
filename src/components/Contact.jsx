@@ -324,7 +324,7 @@ export default function Contact() {
                       Email me ↗
                     </ActionLink>
 
-                    <ActionLink href="/Fatemeh_Ghalandari_CV.pdf">
+                    <ActionLink href="/Fateme_Ghalandari_CV.pdf">
                       Resume ↗
                     </ActionLink>
                   </div>

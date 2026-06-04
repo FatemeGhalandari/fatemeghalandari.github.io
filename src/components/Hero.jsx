@@ -198,7 +198,7 @@ export default function Hero() {
                   </motion.a>
 
                   <motion.a
-                    href="/Fatemeh_Ghalandari_CV.pdf"
+                    href="/Fateme_Ghalandari_CV.pdf"
                     whileHover={reduced ? undefined : { y: -2 }}
                     whileTap={reduced ? undefined : { scale: 0.98 }}
                     className="rounded-xl border border-[color:var(--border)] bg-transparent px-5 py-3 text-sm font-medium text-[color:var(--muted)] transition hover:bg-white/[0.05] hover:text-white"
