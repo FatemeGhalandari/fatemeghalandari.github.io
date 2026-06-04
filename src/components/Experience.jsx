@@ -277,7 +277,7 @@ export default function Experience() {
             </p>
 
             <a
-              href="/Fateme_Ghalandari_CV.pdf"
+              href="/Fatemeh_Ghalandari_CV.pdf"
               className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-white transition hover:text-[color:var(--accent)]"
             >
               Download resume
