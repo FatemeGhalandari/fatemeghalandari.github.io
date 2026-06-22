@@ -180,7 +180,7 @@ export default function Hero() {
 
                 <div className="mt-7 flex flex-wrap gap-3">
                   <motion.a
-                    href="Projects"
+                    href="#Projects"
                     whileHover={reduced ? undefined : { y: -2, scale: 1.02 }}
                     whileTap={reduced ? undefined : { scale: 0.98 }}
                     className="rounded-xl bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-white shadow-[0_20px_70px_rgba(82,74,255,0.35)] transition hover:brightness-110"
@@ -321,6 +321,8 @@ export default function Hero() {
                         <div className="relative mt-6 flex gap-4 text-sm">
                           <a
                             href={project.links.live}
+                            target="_blank"
+                            rel="noreferrer"
                             className="font-medium text-white transition hover:text-[color:var(--accent)]"
                           >
                             Live
