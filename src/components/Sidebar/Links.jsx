@@ -28,8 +28,8 @@ const itemVariants = {
 const Links = () => {
   const items = [
     { id: "Home", label: "Home" },
-    { id: "Skills", label: "Skills" },
-    { id: "Portfolio", label: "Work" },
+    { id: "Strengths", label: "Strengths" },
+    { id: "Projects", label: "Projects" },
     { id: "Contact", label: "Contact" },
   ];
   return (
