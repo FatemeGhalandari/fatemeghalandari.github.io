@@ -59,7 +59,7 @@ const projects = [
     image: "/GraphHub.png",
     imageAlt: "GraphHub project screenshot",
     links: {
-      live: "https://graph-hub.vercel.app/login",
+      live: "https://graph-hub.vercel.app/",
       code: "https://github.com/FatemeGhalandari/GraphHub",
     },
   },
