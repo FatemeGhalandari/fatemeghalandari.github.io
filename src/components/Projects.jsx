@@ -10,6 +10,32 @@ import PropTypes from "prop-types";
 
 const projects = [
   {
+    title: "Core",
+    type: "Full-stack SaaS Platform",
+    description:
+      "Reusable case-management platform that adapts one workflow engine across multiple service-based industries.",
+    highlights: [
+      "Configurable workspaces, case workflows, customer records, reports, and operational settings",
+      "Role-aware assignment, priority, status, comments, activity history, and team visibility",
+      "TypeScript monorepo using React, Express, Prisma, PostgreSQL, Zod, and Docker",
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+    ],
+    image: "/Core_Realty_Email_Walkthrough.gif",
+    imageAlt:
+      "Core application inbox with workflow filters, assignments, priorities, queue health, and customer applications",
+    links: {
+      live: "YOUR_DEPLOYED_CORE_URL",
+      code: "https://github.com/FatemeGhalandari/Core",
+    },
+  },
+  {
     title: "Ontario Service Finder",
     type: "Full-stack Platform",
     description:
@@ -20,8 +46,9 @@ const projects = [
       "Structured schema designed for maintainability and clarity",
     ],
     stack: ["React", "Node.js", "PostgreSQL", "Prisma"],
-    image: "/ontario-service-finder.png",
+    image: "/ontario-service-finder-clickthrough.gif",
     imageAlt: "Ontario Service Finder project screenshot",
+
     links: {
       live: "https://ontario-service-finder.vercel.app/",
       code: "https://github.com/FatemeGhalandari/ontario-service-finder",
@@ -40,27 +67,10 @@ const projects = [
     stack: ["React", "FastAPI", "LLMs"],
     image: "/skillmate.png",
     imageAlt: "SkillMate project screenshot",
+
     links: {
       live: "https://skillmate-orcin.vercel.app/",
       code: "https://github.com/FatemeGhalandari/skillmate",
-    },
-  },
-  {
-    title: "GraphHub",
-    type: "Frontend + Data",
-    description:
-      "Interactive dashboards and visualization flows with a focus on clarity, responsiveness, and rendering performance.",
-    highlights: [
-      "Charts and filtering patterns designed for usability",
-      "Smooth rendering with real datasets and interaction states",
-      "Analytics and feedback loops integrated into the UI",
-    ],
-    stack: ["React", "Firebase", "Charts"],
-    image: "/GraphHub.png",
-    imageAlt: "GraphHub project screenshot",
-    links: {
-      live: "https://graph-hub.vercel.app/",
-      code: "https://github.com/FatemeGhalandari/GraphHub",
     },
   },
 ];
@@ -100,23 +110,36 @@ LinkButton.defaultProps = {
   variant: "secondary",
 };
 
-function ProjectMedia({ image, alt, fallbackTitle, href, reduced }) {
+function ProjectMedia({ image, alt, fallbackTitle, href, reduced, imageFit }) {
   const clickable = Boolean(href);
   const external = typeof href === "string" && href.startsWith("http");
+  const containImage = imageFit === "contain";
 
   const media = (
     <motion.div
       whileHover={reduced ? undefined : { scale: 1.015 }}
       transition={{ type: "spring", stiffness: 220, damping: 18 }}
-      className="relative overflow-hidden rounded-[22px] border border-[color:var(--border)] bg-white/5"
+      className={`relative overflow-hidden rounded-[22px] ${
+        containImage
+          ? "border border-transparent"
+          : "border border-[color:var(--border)] bg-white/5"
+      }`}
     >
-      <div className="aspect-[16/10] w-full">
+      <div
+        className={`aspect-[16/10] w-full ${
+          containImage ? "grid place-items-center p-1.5 sm:p-2" : ""
+        }`}
+      >
         {image ? (
           <motion.img
             src={image}
             alt={alt || ""}
             loading="lazy"
-            className="h-full w-full object-cover"
+            className={
+              containImage
+                ? "max-h-full max-w-full rounded-[20px] object-contain"
+                : "h-full w-full object-cover"
+            }
             initial={{ opacity: 0.7, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.45 }}
@@ -165,12 +188,14 @@ ProjectMedia.propTypes = {
   fallbackTitle: PropTypes.string.isRequired,
   href: PropTypes.string,
   reduced: PropTypes.bool.isRequired,
+  imageFit: PropTypes.oneOf(["cover", "contain"]),
 };
 
 ProjectMedia.defaultProps = {
   image: "",
   alt: "",
   href: "",
+  imageFit: "cover",
 };
 
 export default function Projects() {
@@ -335,6 +360,7 @@ export default function Projects() {
                           fallbackTitle={project.title}
                           href={primaryHref}
                           reduced={reduced}
+                          imageFit={project.imageFit}
                         />
                       </div>
 
