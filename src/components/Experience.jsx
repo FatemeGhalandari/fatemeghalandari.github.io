@@ -10,18 +10,6 @@ import PropTypes from "prop-types";
 
 const experience = [
   {
-    role: "Co-founder & Software Developer",
-    company: "Simor.co",
-    location: "Remote, Canada",
-    dates: "Jan 2025 – Present",
-    bullets: [
-      "Built the MVP frontend in Next.js and implemented backend endpoints in Node.js.",
-      "Ran prototype reviews and shipped fast iterations based on user and team feedback.",
-      "Improved page speed using route-level code splitting and image optimization.",
-    ],
-    tech: ["Next.js", "Node.js", "React", "CI/CD"],
-  },
-  {
     role: "AI Quality Analyst",
     company: "TELUS International AI",
     location: "Remote, Canada",
@@ -33,7 +21,19 @@ const experience = [
     tech: ["Quality", "Evaluation", "Guidelines", "UX Signals"],
   },
   {
-    role: "Software Developer",
+    role: "Co-founder & Software Engineer",
+    company: "Simor.co",
+    location: "Remote, Canada",
+    dates: "Jan 2025 – May 2026",
+    bullets: [
+      "Built the MVP frontend in Next.js and implemented backend endpoints in Node.js.",
+      "Ran prototype reviews and shipped fast iterations based on user and team feedback.",
+      "Improved page speed using route-level code splitting and image optimization.",
+    ],
+    tech: ["Next.js", "Node.js", "React", "CI/CD"],
+  },
+  {
+    role: "Software Engineer",
     company: "Freelance",
     location: "Tehran, Iran",
     dates: "Feb 2024 – Jul 2024",
@@ -44,7 +44,7 @@ const experience = [
     tech: ["TypeScript", "React", "REST APIs", "Performance"],
   },
   {
-    role: "Software Developer",
+    role: "Software Engineer",
     company: "Estarbad",
     location: "Tehran, Iran",
     dates: "Aug 2021 – Dec 2023",
