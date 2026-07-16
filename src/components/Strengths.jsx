@@ -33,16 +33,16 @@ const cards = [
     tools: ["Node.js", "FastAPI", "PostgreSQL", "Prisma"],
   },
   {
-    title: "Delivery & Reliability",
+    title: "AI & LLM Applications",
     subtitle:
-      "Features shipped with production awareness, debugging discipline, and clean handoff.",
+      "AI-enabled product features built around useful workflows, structured outputs, and careful quality evaluation.",
     bullets: [
-      "Testing where it adds real confidence",
-      "Environment-based configuration and secrets hygiene",
-      "Deployment readiness and issue debugging workflow",
-      "Documentation, setup quality, and maintainable delivery",
+      "LLM API integration across user-facing product workflows",
+      "FastAPI services for structured AI-assisted content generation",
+      "Prompt-aware evaluation of output quality, consistency, and edge cases",
+      "Interfaces that turn model responses into clear, usable experiences",
     ],
-    tools: ["Git", "Docker", "CI/CD", "Monitoring"],
+    tools: ["Python", "FastAPI", "OpenRouter", "LLM APIs"],
   },
 ];
 
@@ -84,10 +84,6 @@ export default function Strengths() {
 
   const chipsY = useTransform(smooth, [0, 1], [12, -8]);
 
-  const card1Y = useTransform(smooth, [0, 1], [34, -10]);
-  const card2Y = useTransform(smooth, [0, 1], [48, 0]);
-  const card3Y = useTransform(smooth, [0, 1], [62, 12]);
-
   const card1Opacity = useTransform(smooth, [0.08, 0.25], [0.35, 1]);
   const card2Opacity = useTransform(smooth, [0.14, 0.31], [0.25, 1]);
   const card3Opacity = useTransform(smooth, [0.2, 0.37], [0.2, 1]);
@@ -95,9 +91,9 @@ export default function Strengths() {
   const scanY = useTransform(smooth, [0, 1], [0, 760]);
 
   const cardStyles = [
-    { y: card1Y, opacity: card1Opacity },
-    { y: card2Y, opacity: card2Opacity },
-    { y: card3Y, opacity: card3Opacity },
+    { opacity: card1Opacity },
+    { opacity: card2Opacity },
+    { opacity: card3Opacity },
   ];
 
   return (
@@ -216,7 +212,7 @@ export default function Strengths() {
                 style={reduced ? undefined : cardStyles[index]}
                 whileHover={reduced ? undefined : { y: -8, scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 240, damping: 20 }}
-                className="group relative overflow-hidden rounded-[28px] border border-[color:var(--border)] bg-[rgba(255,255,255,0.03)] p-6 backdrop-blur-xl"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-[color:var(--border)] bg-[rgba(255,255,255,0.03)] p-6 backdrop-blur-xl"
               >
                 <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(108,92,255,0.10),transparent_58%,rgba(255,255,255,0.04))]" />
@@ -238,7 +234,7 @@ export default function Strengths() {
                   </div>
                 </div>
 
-                <ul className="relative mt-6 space-y-4 text-[15px] leading-7 text-[color:var(--muted)]">
+                <ul className="relative mt-6 flex-1 space-y-4 text-[15px] leading-7 text-[color:var(--muted)]">
                   {card.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-3">
                       <span className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
