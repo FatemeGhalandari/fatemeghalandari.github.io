@@ -9,13 +9,13 @@ import {
 
 const featured = [
   {
-    title: "Ontario Service Finder",
-    tag: "Full-stack Platform",
-    desc: "Directory and search experience with maps, admin workflows, relational data modeling, and production-style constraints.",
-    stack: ["React", "Node", "PostgreSQL", "Prisma"],
+    title: "Core",
+    tag: "Full-stack SaaS Platform",
+    desc: "Configurable case-management platform with multi-tenant workspaces, role-based workflows, reporting, and PostgreSQL-backed APIs.",
+    stack: ["React", "TypeScript", "Node.js", "PostgreSQL"],
     links: {
-      live: "https://ontario-service-finder.vercel.app/",
-      code: "https://github.com/FatemeGhalandari/ontario-service-finder",
+      live: "https://core-the-main.vercel.app/",
+      code: "https://github.com/FatemeGhalandari/Core",
     },
   },
   {
