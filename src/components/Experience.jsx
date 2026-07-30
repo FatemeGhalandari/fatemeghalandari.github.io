@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 const experience = [
   {
     role: "AI Quality Analyst",
-    company: "TELUS International AI",
+    company: "TELUS Digital",
     location: "Remote, Canada",
     dates: "Feb 2025 – Present",
     bullets: [
